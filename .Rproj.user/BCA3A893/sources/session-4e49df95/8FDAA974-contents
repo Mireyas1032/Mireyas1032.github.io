@@ -1,0 +1,5 @@
+git remote add origin https://github.com/Mireyas1032/Mireyas1032.github.io.git
+git branch -M main
+git add --all
+git commit -m "initial commit"
+git push -origin main

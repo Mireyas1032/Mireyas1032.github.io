@@ -1,0 +1,37 @@
+project:
+  type: website
+
+website:
+  title: "Mireyas1032.github.io"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: research.qmd
+        text: Research
+      - href: project.qmd
+        text: Project
+      - href: cv.pdf
+        text: CV
+      - text: Assignments
+        menu:
+          - href: Assignment 1.qmd
+            text: Assignment 1
+          - href: assignment2.qmd
+            text: assignment2
+          - href: assignment3.qmd
+            text: assignment3
+
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+editor: visual
+

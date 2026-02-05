@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "doc.html",
+    "href": "doc.html",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#quarto",
+    "href": "doc.html#quarto",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#running-code",
+    "href": "doc.html#running-code",
+    "title": "doc",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mireyas1032.github.io",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Untitled.html#slide-2",
+    "href": "Untitled.html#slide-2",
+    "title": "test",
+    "section": "slide 2",
+    "text": "slide 2"
+  },
+  {
+    "objectID": "test.html#quarto",
+    "href": "test.html#quarto",
+    "title": "test",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "test.html#bullets",
+    "href": "test.html#bullets",
+    "title": "test",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+  },
+  {
+    "objectID": "test.html#code",
+    "href": "test.html#code",
+    "title": "test",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+  },
+  {
+    "objectID": "Untitled.html#database-systems",
+    "href": "Untitled.html#database-systems",
+    "title": "test",
+    "section": "Database Systems",
+    "text": "Database Systems"
+  },
+  {
+    "objectID": "assignment2.html#database-systems",
+    "href": "assignment2.html#database-systems",
+    "title": "assignment2",
+    "section": "Database Systems",
+    "text": "Database Systems\niPERMS (Interactive Personnel Electronic Records Management System)\nA database system used to store and access data related to individual service members, such as service history, evaluations, training records, and official documents. The database allows authorized users to retrieve, update, and maintain records over time, allowing secure access to personnel information across different units and assignments.\nWorkday\nA human resources application that employs a database system to store and manage employee data such as personal information, job roles, payroll details, benefits enrollment, and performance records.The database allows authorized users and employees to access and update information over time.\nNotion\nA productivity app that uses a database system to store and manage persistent data such as notes, task lists, project boards, and user-created tables. The database allows users to create, update, and retrieve structured information across sessions and devices, ensuring data is persistently stored. Notion’s use of relational tables and linked databases supports flexible data organization and retrieval."
+  },
+  {
+    "objectID": "assignment2.html#domain-project-proposal-1",
+    "href": "assignment2.html#domain-project-proposal-1",
+    "title": "assignment2",
+    "section": "Domain Project Proposal 1",
+    "text": "Domain Project Proposal 1\nPublic Benefit Access Database\nPurpose: To analyze accessibility of public benefits (housing assistance, food aid, unemployment services) across different demographic and geographic groups to identify gaps and inequities.\nFunctions:\n\nStore benefit programs and eligibility rules\nTrack application volume and approval rates\nAssociate benefits with ZIP codes or census tracts\nCompare access across demographic indicators\nIdentify under-served areas\n\nUser Interface:\nwill include a program directory that allows users to browse available benefit programs, an application statistics view that displays participation and approval trends, a geographic comparison table for examining differences across locations, and an equity analysis dashboard that highlights disparities in access and outcomes."
+  },
+  {
+    "objectID": "assignment2.html#domain-project-proposal-2",
+    "href": "assignment2.html#domain-project-proposal-2",
+    "title": "assignment2",
+    "section": "Domain Project Proposal 2",
+    "text": "Domain Project Proposal 2\nLitigation Outcomes and Risk Analysis Database\nPurpose: analyzes publicly available court case metadata to identify litigation trends and potential legal risk patterns across jurisdictions.\n\n\nFunctions:\n\nStore publicly available case metadata (case type, jurisdiction, filing and disposition dates)\nRecord case outcomes using simplified categorical labels (e.g., settled, dismissed, adjudicated)\nTrack case duration and resolution patterns\nCompare litigation trends across courts and case types\nSupport identification of areas with higher litigation frequency or risk\n\n\nUser Interface\n\nCase Directory: Browse and filter cases by jurisdiction, case type, and status\nOutcome Summary View: Display aggregated case outcome trends\nJurisdiction Comparison Table: Compare litigation patterns across courts Risk Analysis\nDashboard: Visualize high-level trends in case volume, duration, and outcomes"
+  },
+  {
+    "objectID": "Assignment 1.html#database-systems",
+    "href": "Assignment 1.html#database-systems",
+    "title": "Assignment 1",
+    "section": "Database Systems",
+    "text": "Database Systems\niPERMS (Interactive Personnel Electronic Records Management System)\nA database system used to store and access data related to individual service members, such as service history, evaluations, training records, and official documents. The database allows authorized users to retrieve, update, and maintain records over time, allowing secure access to personnel information across different units and assignments.\nWorkday\nA human resources application that employs a database system to store and manage employee data such as personal information, job roles, payroll details, benefits enrollment, and performance records.The database allows authorized users and employees to access and update information over time.\nNotion\nA productivity app that uses a database system to store and manage persistent data such as notes, task lists, project boards, and user-created tables. The database allows users to create, update, and retrieve structured information across sessions and devices, ensuring data is persistently stored. Notion’s use of relational tables and linked databases supports flexible data organization."
+  },
+  {
+    "objectID": "Assignment 1.html#domain-project-proposal-1",
+    "href": "Assignment 1.html#domain-project-proposal-1",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 1",
+    "text": "Domain Project Proposal 1\nPublic Benefit Access Database\nPurpose: To analyze accessibility of public benefits (housing assistance, food aid, unemployment services) across different demographic and geographic groups to identify gaps and inequities.\n\n\nFunctions:\n\nStore benefit programs and eligibility rules\nTrack application volume and approval rates\nAssociate benefits with ZIP codes or census tracts\nCompare access across demographic indicators\nIdentify under-served areas\n\n\nUser Interface:\nProgram directory: Browse available benefit programs\nApplication view: Displays participation and approval trends\nGeographic comparison table: Compare differences across locations\nEquity analysis dashboard: Visualize disparities in access and outcomes."
+  },
+  {
+    "objectID": "Assignment 1.html#domain-project-proposal-2",
+    "href": "Assignment 1.html#domain-project-proposal-2",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 2",
+    "text": "Domain Project Proposal 2\nLitigation Outcomes and Risk Analysis Database\nPurpose: To analyzes publicly available court case data to identify litigation trends and potential legal risk patterns across jurisdictions.\n\n\nFunctions:\n\nStore publicly available case metadata (case type, jurisdiction, etc.)\nRecord case outcomes using simplified categorical labels\nTrack case duration and resolution patterns\nCompare litigation trends across courts and case types\nSupport identification of areas with higher litigation frequency or risk\n\n\nUser Interface\n\nCase Directory: Browse and filter cases by jurisdiction, case type, and status\nOutcome Summary View: Display aggregated case outcome trends\nJurisdiction Comparison Table: Compare litigation patterns across courts Risk Analysis\nDashboard: Visualize high-level trends in case volume, duration, and outcomes"
+  },
+  {
+    "objectID": "Assignment 1.html#domain-project-proposal-3",
+    "href": "Assignment 1.html#domain-project-proposal-3",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 3",
+    "text": "Domain Project Proposal 3\nSmall Business Stability Database\nPurpose: Design and implement a database that analyzes local economic conditions affecting small business stability and resilience over time\n\n\nFunctions:\n\nStore small business characteristics (industry type, size, location)\nTrack business openings and closures over time\nRecord economic indicators such as unemployment rates and inflation periods\nAssociate business trends with geographic areas (ZIP codes or census tracts)\nCompare business stability across industries and locations\n\n\nUser Interface\n\nBusiness Directory: Browse businesses by industry and location Economic Indicators\nView: Display selected economic trends over time\nGeographic Comparison Table: Compare business openings and closures across areas\nStability Analysis Dashboard: Visualize business survival and closure patterns"
+  },
+  {
+    "objectID": "Assignment 1.html#data-mining",
+    "href": "Assignment 1.html#data-mining",
+    "title": "Assignment 1",
+    "section": "Data Mining",
+    "text": "Data Mining\nData mining allows data interpretation to go beyond table formatting. It allows developers to find patterns and correlations using databases, machine learning, statistical analysis, and most recently AI. It allows organizations to find hidden trends, bottlenecks, and other insights which can serve as tools to solve multiple challenges."
+  },
+  {
+    "objectID": "Assignment 1.html#social-media-information-storage",
+    "href": "Assignment 1.html#social-media-information-storage",
+    "title": "Assignment 1",
+    "section": "Social Media Information Storage",
+    "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
+  }
+]

@@ -1,0 +1,77 @@
+---
+title: "assignment2"
+format: revealjs
+---
+
+
+## Database Systems {.smaller}
+
+**iPERMS (Interactive Personnel Electronic Records Management System)**
+
+A database system used to store and access data related to individual service members, such as service history, evaluations, training records, and official documents. The database allows authorized users to retrieve, update, and maintain records over time, allowing secure access to personnel information across different units and assignments.
+
+**Workday**
+
+A human resources application that employs a database system to store and manage employee data such as personal information, job roles, payroll details, benefits enrollment, and performance records.The database allows authorized users and employees to access and update information over time.
+
+**Notion**
+
+A productivity app that uses a database system to store and manage persistent data such as notes, task lists, project boards, and user-created tables. The database allows users to create, update, and retrieve structured information across sessions and devices, ensuring data is persistently stored. Notion’s use of relational tables and linked databases supports flexible data organization and retrieval.
+
+
+## Domain Project Proposal 1 {.smaller}
+
+**Public Benefit Access Database**
+
+[Purpose]{.underline}: To analyze accessibility of public benefits (housing assistance, food aid, unemployment services) across different demographic and geographic groups to identify gaps and inequities.
+
+[Functions:]{.underline}
+
+-   Store benefit programs and eligibility rules
+
+-   Track application volume and approval rates
+
+-   Associate benefits with ZIP codes or census tracts
+
+-   Compare access across demographic indicators
+
+-   Identify under-served areas
+
+[User Interface:]{.underline}
+
+will include a program directory that allows users to browse available benefit programs, an application statistics view that displays participation and approval trends, a geographic comparison table for examining differences across locations, and an equity analysis dashboard that highlights disparities in access and outcomes.
+
+
+## Domain Project Proposal 2 {.smaller}
+
+**Litigation Outcomes and Risk Analysis Database**
+
+Purpose: analyzes publicly available court case metadata to identify litigation trends and potential legal risk patterns across jurisdictions.
+
+::::: columns
+::: column
+Functions:
+
+-   Store publicly available case metadata (case type, jurisdiction, filing and disposition dates)
+
+-   Record case outcomes using simplified categorical labels (e.g., settled, dismissed, adjudicated)
+
+-   Track case duration and resolution patterns
+
+-   Compare litigation trends across courts and case types
+
+-   Support identification of areas with higher litigation frequency or risk
+:::
+
+::: column
+User Interface
+
+-   Case Directory: Browse and filter cases by jurisdiction, case type, and status
+
+-   Outcome Summary View: Display aggregated case outcome trends
+
+-   Jurisdiction Comparison Table: Compare litigation patterns across courts Risk Analysis
+
+-   Dashboard: Visualize high-level trends in case volume, duration, and outcomes
+:::
+:::::

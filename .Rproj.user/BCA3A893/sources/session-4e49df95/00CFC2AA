@@ -1,9 +1,9 @@
 {
     "id": "00CFC2AA",
-    "path": "~/Mireyas1032.github.io/Assignment 1.qmd",
-    "project_path": "Assignment 1.qmd",
+    "path": "~/Documents/Assignment 1.qmd",
+    "project_path": null,
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "2681026253",
     "contents": "",
     "dirty": false,
     "created": 1770270952308.0,
@@ -17,16 +17,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "7,0",
+        "cursorPosition": "126,16",
         "scrollLine": "108",
         "rmdVisualModeLocation": "76:121"
     },
     "folds": "",
-    "lastKnownWriteTime": 1770318250,
+    "lastKnownWriteTime": 1770320127,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1770318250322,
+    "last_content_update": 1770320127108,
     "read_only": false,
     "read_only_alternatives": []
 }

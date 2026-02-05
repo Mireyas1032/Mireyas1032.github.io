@@ -1,5 +1,6 @@
 ---
 title: "Assignment 1"
+author: Mireya Sanchez
 format: 
   revealjs:
     transition: slide

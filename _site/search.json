@@ -1,10 +1,21 @@
 [
   {
+<<<<<<< HEAD
+=======
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "5",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+>>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+<<<<<<< HEAD
   },
   {
     "objectID": "doc.html",
@@ -131,5 +142,7 @@
     "title": "Assignment 1",
     "section": "Social Media Information Storage",
     "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
+=======
+>>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
   }
 ]

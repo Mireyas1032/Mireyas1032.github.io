@@ -1,5 +1,6 @@
 {
   "index.qmd": {
+<<<<<<< HEAD
     "index.html": "98864ba5"
   },
   "about.qmd": {
@@ -25,5 +26,11 @@
   },
   "Untitled.qmd": {
     "Untitled.html": "4bf27c36"
+=======
+    "index.html": "a9a51519"
+  },
+  "about.qmd": {
+    "about.html": "62843393"
+>>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
   }
 }

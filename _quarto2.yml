@@ -1,12 +1,8 @@
 project:
   type: website
-<<<<<<< HEAD
-  output-dir: docs
-=======
->>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
 
 website:
-  title: "Mireyas1032.github.io"
+  title: "5"
   navbar:
     right:
       - href: index.qmd
@@ -27,7 +23,6 @@ website:
             text: assignment2
           - href: assignment3.qmd
             text: assignment3
-
 
 format:
   html:

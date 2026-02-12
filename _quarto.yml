@@ -1,9 +1,6 @@
 project:
   type: website
-<<<<<<< HEAD
   output-dir: docs
-=======
->>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
 
 website:
   title: "Mireyas1032.github.io"
@@ -23,8 +20,8 @@ website:
         menu:
           - href: Assignment 1.qmd
             text: Assignment 1
-          - href: assignment2.qmd
-            text: assignment2
+          - href: Assignment 2.qmd
+            text: Assignemnt 2
           - href: assignment3.qmd
             text: assignment3
 

@@ -40,5 +40,68 @@
     "title": "Assignment 1",
     "section": "Social Media Information Storage",
     "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
+  },
+  {
+    "objectID": "Untitled.html#database-systems",
+    "href": "Untitled.html#database-systems",
+    "title": "test",
+    "section": "Database Systems",
+    "text": "Database Systems"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mireyas1032.github.io",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "doc.html",
+    "href": "doc.html",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#quarto",
+    "href": "doc.html#quarto",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#running-code",
+    "href": "doc.html#running-code",
+    "title": "doc",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "test.html#quarto",
+    "href": "test.html#quarto",
+    "title": "test",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "test.html#bullets",
+    "href": "test.html#bullets",
+    "title": "test",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+  },
+  {
+    "objectID": "test.html#code",
+    "href": "test.html#code",
+    "title": "test",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
   }
 ]

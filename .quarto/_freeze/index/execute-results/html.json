@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
   "hash": "3634485e97dc87fcf25ef4e9993a53b1",
   "result": {
     "engine": "knitr",
     "markdown": "---\ntitle: \"Mireyas1032.github.io\"\n---\n\nThis is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n",
+=======
+  "hash": "c6347445aed48cad1280237de5d833fa",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"5\"\n---\n\nThis is a Quarto website.\n\nTo learn more about Quarto websites visit <https://quarto.org/docs/websites>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n",
+>>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

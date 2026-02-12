@@ -2,3 +2,8 @@
 **/*.quarto_ipynb
 .Rproj.user/
 .Rproj.user/
+
+.Rproj.user/
+.quarto/
+_site/
+.DS_Store

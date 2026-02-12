@@ -1,0 +1,106 @@
+---
+title: "Assignment 2"
+format: 
+  revealjs:
+    transition: slide
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bank Database Schema
+
+```{r}
+library(DiagrammeR)
+
+grViz("
+digraph bank_schema {
+  graph [rankdir=LR, splines=ortho]
+  node  [shape=plain, fontname=Helvetica]
+  edge  [fontname=Helvetica]
+
+  branch [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>branch</b></td></tr>
+        <tr><td align='left'><b>PK</b> branch_name</td></tr>
+        <tr><td align='left'>branch_city</td></tr>
+        <tr><td align='left'>assets</td></tr>
+      </table>
+    >
+  ]
+
+  customer [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>customer</b></td></tr>
+        <tr><td align='left'><b>PK</b>customer_name</td></tr>
+        <tr><td align='left'>ID</td></tr>
+        <tr><td align='left'>customer_street</td></tr>
+        <tr><td align='left'>customer_city</td></tr>
+      </table>
+    >
+  ]
+
+  loan [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>loan</b></td></tr>
+        <tr><td align='left'><b>PK</b> branch_name</td></tr>
+        <tr><td align='left'><b>FK</b> loan_number</td></tr>
+        <tr><td align='left'>amount</td></tr>
+      </table>
+    >
+  ]
+
+  account [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>account</b></td></tr>
+        <tr><td align='left'><b>PK</b> branch_name</td></tr>
+        <tr><td align='left'><b>FK</b> account_number</td></tr>
+        <tr><td align='left'>balance</td></tr>
+      </table>
+    >
+  ]
+
+  borrower [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>borrower</b></td></tr>
+        <tr><td align='left'><b>FK</b> loan_number</td></tr>
+        <tr><td align='left'>ID</td></tr>
+      </table>
+    >
+  ]
+
+  depositor [
+    label=<
+      <table border='1' cellborder='0' cellspacing='0' cellpadding='6'>
+        <tr><td bgcolor='#f2f2f2'><b>depositor</b></td></tr>
+        <tr><td align='left'><b>FK</b> account_number</td></tr>
+        <tr><td align='left'>ID</td></tr>
+      </table>
+    >
+  ]
+
+  loan     -> branch
+  account  -> branch
+
+  borrower -> customer
+  borrower -> loan
+
+  depositor -> customer
+  depositor -> account
+}
+")
+```
+
+## Code
+
+
+
+```{r}
+1 + 1
+```

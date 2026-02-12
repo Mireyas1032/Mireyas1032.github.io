@@ -42,18 +42,32 @@
     "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
   },
   {
-    "objectID": "Untitled.html#database-systems",
-    "href": "Untitled.html#database-systems",
-    "title": "test",
-    "section": "Database Systems",
-    "text": "Database Systems"
+    "objectID": "Assignment 2.html#relation-schema-relation-and-instance",
+    "href": "Assignment 2.html#relation-schema-relation-and-instance",
+    "title": "Assignment 2",
+    "section": "Relation Schema, Relation, and Instance",
+    "text": "Relation Schema, Relation, and Instance\nA relation schema consists of a list of attributes and their corresponding domains. For example, the relation schema of department is:\ndepartment (dept_name, building. budget)\nThe term relation is used to refer to a table. A relation has multiple rows called tuples and columns called attributes. For example, the prereq relation will have a course_id attribute and a prereq_id attribute with multiple tuples showing the ID numbers.\nAn instance refers to a specific instance of a relation containing a specific set of rows. For example: the instance of instructor has 12 tuples corresponding to 12 instructors"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mireyas1032.github.io",
+    "objectID": "Assignment 2.html#bank-database-schema",
+    "href": "Assignment 2.html#bank-database-schema",
+    "title": "Assignment 2",
+    "section": "Bank Database Schema",
+    "text": "Bank Database Schema"
+  },
+  {
+    "objectID": "Assignment 2.html#ai-for-databases",
+    "href": "Assignment 2.html#ai-for-databases",
+    "title": "Assignment 2",
+    "section": "AI for databases",
+    "text": "AI for databases\nAI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.\nLarge Language Models also allows user to query a database using plain English instead of writing SQL code. LLM’s can analyze the database schema and map natural language phrases to schema alerts to generate SQL. Traditional methods require users to understand SQL syntax and schema structure, but AI requires no prior experience and can even create query’s faster with fewer mistakes."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "doc.html",
@@ -77,11 +91,18 @@
     "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mireyas1032.github.io",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Untitled.html#database-systems",
+    "href": "Untitled.html#database-systems",
+    "title": "test",
+    "section": "Database Systems",
+    "text": "Database Systems"
   },
   {
     "objectID": "test.html#quarto",

@@ -5,9 +5,15 @@ format:
     transition: slide
 ---
 
-## Quarto
+## **Relation Schema, Relation, and Instance**
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+A **relation schema** consists of a list of attributes and their corresponding domains. For example, the relation schema of `department` is:
+
+`department (dept_name, building. budget)`
+
+The term **relation** is used to refer to a table. A relation has multiple rows called tuples and columns called attributes. For example, the `prereq` relation will have a `course_id` attribute and a `prereq_id` attribute with multiple tuples showing the ID numbers.
+
+An **instance** refers to a specific instance of a relation containing a specific set of rows. For example: the instance of `instructor` has 12 tuples corresponding to 12 instructors
 
 ## Bank Database Schema
 
@@ -97,10 +103,8 @@ digraph bank_schema {
 ")
 ```
 
-## Code
+## AI for databases
 
+AI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.
 
-
-```{r}
-1 + 1
-```
+Large Language Models also allows user to query a database using plain English instead of writing SQL code. LLM's can analyze the database schema and map natural language phrases to schema alerts to generate SQL. Traditional methods require users to understand SQL syntax and schema structure, but AI requires no prior experience and can even create query's faster with fewer mistakes.

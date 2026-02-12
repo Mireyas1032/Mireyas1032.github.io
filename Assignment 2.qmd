@@ -5,7 +5,7 @@ format:
     transition: slide
 ---
 
-## **Relation Schema, Relation, and Instance**
+## **Relation Schema, Relation, and Instance**{.smaller}
 
 A **relation schema** consists of a list of attributes and their corresponding domains. For example, the relation schema of `department` is:
 
@@ -103,7 +103,7 @@ digraph bank_schema {
 ")
 ```
 
-## AI for databases
+## AI for databases {.smaller}
 
 AI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.
 

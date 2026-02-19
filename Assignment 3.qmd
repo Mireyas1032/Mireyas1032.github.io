@@ -59,4 +59,4 @@ format:
 
 ## Find instructor who has never given an A grade in any course she or he has taught.
 
-![](images/Never given A.png)
+![](images/Never%20given%20A.png)

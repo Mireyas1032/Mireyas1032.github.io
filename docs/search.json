@@ -124,5 +124,68 @@
     "title": "test",
     "section": "Code",
     "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+  },
+  {
+    "objectID": "Assignment 3.html#lists",
+    "href": "Assignment 3.html#lists",
+    "title": "Assignment 3",
+    "section": "Lists",
+    "text": "Lists\n\n\nSELECT DISTINCT\nID FROM takes;\n\n\nSELECT name\nFROM instructor;"
+  },
+  {
+    "objectID": "Assignment 3.html#lists-cont.",
+    "href": "Assignment 3.html#lists-cont.",
+    "title": "Assignment 3",
+    "section": "Lists Cont.",
+    "text": "Lists Cont.\nSELECT dept_name\nFROM department"
+  },
+  {
+    "objectID": "Assignment 3.html#student-who-has-taken-at-least-one-comp.-sci.-course",
+    "href": "Assignment 3.html#student-who-has-taken-at-least-one-comp.-sci.-course",
+    "title": "Assignment 3",
+    "section": "Student who has taken at least one Comp. Sci. course;",
+    "text": "Student who has taken at least one Comp. Sci. course;"
+  },
+  {
+    "objectID": "Assignment 3.html#add-grades-to-list",
+    "href": "Assignment 3.html#add-grades-to-list",
+    "title": "Assignment 3",
+    "section": "Add grades to list",
+    "text": "Add grades to list"
+  },
+  {
+    "objectID": "Assignment 3.html#student-who-has-not-taken-any-course-offered-before-2017",
+    "href": "Assignment 3.html#student-who-has-not-taken-any-course-offered-before-2017",
+    "title": "Assignment 3",
+    "section": "Student who has not taken any course offered before 2017",
+    "text": "Student who has not taken any course offered before 2017"
+  },
+  {
+    "objectID": "Assignment 3.html#for-each-department-find-the-maximum-instructor-salary",
+    "href": "Assignment 3.html#for-each-department-find-the-maximum-instructor-salary",
+    "title": "Assignment 3",
+    "section": "For each department, find the maximum instructor salary",
+    "text": "For each department, find the maximum instructor salary"
+  },
+  {
+    "objectID": "Assignment 3.html#find-the-lowest-of-those-per-department-maximum-salaries",
+    "href": "Assignment 3.html#find-the-lowest-of-those-per-department-maximum-salaries",
+    "title": "Assignment 3",
+    "section": "Find the lowest of those per-department maximum salaries",
+    "text": "Find the lowest of those per-department maximum salaries"
+  },
+  {
+    "objectID": "Assignment 3.html#add-department-names-and-instructor-names-to-the-list",
+    "href": "Assignment 3.html#add-department-names-and-instructor-names-to-the-list",
+    "title": "Assignment 3",
+    "section": "Add department names and instructor names to the list",
+    "text": "Add department names and instructor names to the list"
+  },
+  {
+    "objectID": "Assignment 3.html#find-instructor-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.",
+    "href": "Assignment 3.html#find-instructor-who-has-never-given-an-a-grade-in-any-course-she-or-he-has-taught.",
+    "title": "Assignment 3",
+    "section": "Find instructor who has never given an A grade in any course she or he has taught.",
+    "text": "Find instructor who has never given an A grade in any course she or he has taught."
   }
 ]

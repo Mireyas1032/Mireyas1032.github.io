@@ -1,36 +1,26 @@
 {
+  "doc.qmd": {
+    "doc.html": "5eb413d5"
+  },
   "index.qmd": {
-<<<<<<< HEAD
-    "index.html": "98864ba5"
+    "index.html": "9bf788b1"
   },
   "about.qmd": {
-    "about.html": "831970ce"
-  },
-  "doc.qmd": {
-    "doc.html": "f3b3b9fc"
-  },
-  "test.qmd": {
-    "test.html": "97e6d6ee"
-  },
-  "Assignment 1.qmd": {
-    "Assignment 1.html": "e744d120"
-  },
-  "Assignment #1.qmd": {
-    "Assignment #1.html": "16592bce"
-  },
-  "assignment1.qmd": {
-    "assignment1.html": "3800b5ab"
-  },
-  "assignment2.qmd": {
-    "assignment2.html": "12c62e90"
+    "about.html": "3e5be54f"
   },
   "Untitled.qmd": {
-    "Untitled.html": "4bf27c36"
-=======
-    "index.html": "a9a51519"
+    "Untitled.html": "cee346ef"
   },
-  "about.qmd": {
-    "about.html": "62843393"
->>>>>>> e886bc252fc728c0f211ba5591376cc59759aa9a
+  "Assignment 2.qmd": {
+    "Assignment 2.html": "b0ba70c5"
+  },
+  "test.qmd": {
+    "test.html": "59c75d48"
+  },
+  "Assignment 1.qmd": {
+    "Assignment 1.html": "8e7f626d"
+  },
+  "Assignment 3.qmd": {
+    "Assignment 3.html": "1cf37eef"
   }
 }

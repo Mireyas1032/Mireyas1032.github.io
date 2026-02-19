@@ -1,0 +1,62 @@
+---
+title: "Assignment 3"
+format: 
+  revealjs:
+    transition: slide
+---
+
+## Lists
+
+::::: columns
+::: column
+`SELECT DISTINCT`
+
+`ID FROM takes;`
+
+![](images/ID%20image.png){width="54"}
+:::
+
+::: column
+`SELECT name`
+
+`FROM instructor;`
+
+![](images/name%20image.png){width="101"}
+:::
+:::::
+
+## Lists Cont.
+
+`SELECT dept_name`
+
+`FROM department`
+
+![](images/Dept%20image.png){width="154"}
+
+## Student who has taken at least one Comp. Sci. course;
+
+![](images/atleast%20one%20comp%20class.png)
+
+## Add grades to list
+
+![](images/add%20grade.png)
+
+## Student who has not taken any course offered before 2017
+
+![](images/no%20course%20before%202017.png)
+
+## For each department, find the maximum instructor salary
+
+![](images/max%20salary.png)
+
+## Find the lowest of those per-department maximum salaries
+
+![](images/Lowest%20salary.png)
+
+## Add department names and instructor names to the list
+
+![](images/add%20dept%20and%20instructor.png)
+
+## Find instructor who has never given an A grade in any course she or he has taught.
+
+![](images/Never given A.png)

@@ -1,0 +1,52 @@
+---
+title: "Assignment 5"
+format: 
+  revealjs:
+    transition: slide
+---
+
+## 2. Medical E-R diagram
+
+![](images/assg%205.drawio.png)
+
+## 3. Why do we need weak entity sets?
+
+Weak entity sets are used because they represent entities whose existence depends on another entity and whose identity is determined using the key of that identifying entity along with a discriminator. Using weak entities allows the database design to model real-world dependencies clearly without introducing artificial keys.
+
+Ex: `Section` depends on `course`. The attributes of `section` alone are not enough to uniquely identify it, so `section` needs to be identified using `course_id`.
+
+## 4a {.smaller}
+
+Employee lives in same city as the company they work for
+```
+SELECT e.ID, e.person_name
+FROM employee AS e
+JOIN works   AS w ON e.ID = w.ID
+JOIN company AS c ON w.company_name = c.company_name
+WHERE e.city = c.city;
+```
+
+Employee lives in same city and same street as their manager
+```
+SELECT e.ID, e.person_name
+FROM employee AS e
+JOIN manages  AS m   ON e.ID = m.ID
+JOIN employee AS mgr ON m.manager_id = mgr.ID
+WHERE e.city = mgr.city
+  AND e.street = mgr.street;
+```
+
+Employee earns more than the average salary of employees at their company
+```
+SELECT e.ID, e.person_name
+FROM employee AS e
+JOIN works AS w ON e.ID = w.ID
+WHERE w.salary >
+      (SELECT AVG(w2.salary)
+       FROM works AS w2
+       WHERE w2.company_name = w.company_name);
+```
+
+## 4b
+
+The query is wrong because `natural join` joins tables using all attributes with the same name. In this case, it incorrectly joins `section` and `course` on both `course_id` and `title`. While the relationship should only use `course_id`, it's also using `title` because both `section` and `course` contain that attribute. in order for it to work, the schema needs to explicitly specify the join condition.

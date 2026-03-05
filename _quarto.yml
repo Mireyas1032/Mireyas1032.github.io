@@ -24,6 +24,10 @@ website:
             text: Assignemnt 2
           - href: Assignment 3.qmd
             text: Assignment 3
+          - href: Assignment 4.qmd
+            text: Assignment 4
+          - href: Assignment 5.qmd
+            text: Assignment 5
 
 
 format:

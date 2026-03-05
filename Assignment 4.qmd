@@ -1,0 +1,106 @@
+---
+title: "Assignment 4"
+format: 
+  revealjs:
+    transition: slide
+---
+
+## 1. Strong v. Weak Entity Set {.smaller}
+
+A strong entity set is an entity set that has a primary key of its own, meaning its entities can be uniquely identified by their own attributes alone
+
+A weak entity set's existence depends on another entity (i.e. identifying entity) and does not have a primary key of its own. Instead, it's identified using the primary key of the strong entity plus a special attribute called a discriminator
+
+
+```{r}
+library(DiagrammeR)
+
+grViz("
+digraph ER {
+
+  graph [
+    layout = neato,
+    overlap = false,
+    splines = false
+  ]
+
+  node [
+    shape = plaintext,
+    fontname = 'Times',
+    fontsize = 22
+  ]
+
+  # --- Strong Entity: course_offering ---
+  course_offering [
+    pos = '0,0!',
+    label = <
+      <TABLE BORDER='1' CELLBORDER='0' CELLSPACING='0'>
+        <TR><TD BGCOLOR='#b7dbe8'><B>course_offering</B></TD></TR>
+        <TR><TD ALIGN='LEFT'><U>offering_id</U></TD></TR>
+        <TR><TD ALIGN='LEFT'>semester</TD></TR>
+        <TR><TD ALIGN='LEFT'>year</TD></TR>
+        <TR><TD ALIGN='LEFT'>instructor</TD></TR>
+      </TABLE>
+    >
+  ]
+
+  # --- Weak Entity: assignment ---
+  assignment [
+    pos = '8,0!',
+    label = <
+      <TABLE BORDER='2' CELLBORDER='0' CELLSPACING='0'>
+        <TR><TD BGCOLOR='#b7dbe8'><B>assignment</B></TD></TR>
+        <TR><TD ALIGN='LEFT'><U>assignment_number</U></TD></TR>
+        <TR><TD ALIGN='LEFT'>title</TD></TR>
+        <TR><TD ALIGN='LEFT'>due_date</TD></TR>
+        <TR><TD ALIGN='LEFT'>total_points</TD></TR>
+      </TABLE>
+    >
+  ]
+
+  # --- Identifying Relationship ---
+  has_assignment [
+    pos = '4,0!',
+    shape = diamond,
+    peripheries = 2,
+    fixedsize = true,
+    width = 2.6,
+    height = 1.2,
+    fontsize = 22,
+    fontname = 'Times',
+    label = 'has_assignment'
+  ]
+
+  # --- Edges ---
+  # Arrow to strong entity
+  has_assignment -> course_offering [
+    penwidth = 2.5,
+    arrowhead = normal
+  ]
+
+  # Total participation from weak entity
+  assignment -> has_assignment [
+    dir = none,
+    penwidth = 3.5
+  ]
+}
+")
+```
+## 2.
+
+![](images/Assignment 4.drawio.png)
+
+## 3a. Appending natural join
+
+Appending natural join section does not change the result because, as defined in Chapter 4, a natural join matches tuples on all common attributes and retains only one copy of each common column.
+
+The relation takes contains the attributes (course_id, sec_id, semester, year), which form a foreign key referencing the primary key of section. By referential integrity, every tuple in takes must already match a tuple in section ch4 . Therefore, performing natural join section neither removes nor adds tuples—it only adds additional attributes that are not used in the SELECT, WHERE, GROUP BY, or HAVING clauses. Hence, the result of the query remains unchanged.
+
+## 3b.
+
+```
+SELECT ID
+FROM employee NATURAL LEFT OUTER JOIN manages
+WHERE manager_id IS NULL;
+```
+

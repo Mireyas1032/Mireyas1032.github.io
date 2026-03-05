@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "Assignment 4.html#strong-v.-weak-entity-set",
+    "href": "Assignment 4.html#strong-v.-weak-entity-set",
+    "title": "Assignment 4",
+    "section": "1. Strong v. Weak Entity Set",
+    "text": "1. Strong v. Weak Entity Set\nA strong entity set is an entity set that has a primary key of its own, meaning its entities can be uniquely identified by their own attributes alone\nA weak entity set’s existence depends on another entity (i.e. identifying entity) and does not have a primary key of its own. Instead, it’s identified using the primary key of the strong entity plus a special attribute called a discriminator"
+  },
+  {
+    "objectID": "Assignment 4.html#section",
+    "href": "Assignment 4.html#section",
+    "title": "Assignment 4",
+    "section": "2.",
+    "text": "2."
+  },
+  {
+    "objectID": "Assignment 4.html#a.-appending-natural-join",
+    "href": "Assignment 4.html#a.-appending-natural-join",
+    "title": "Assignment 4",
+    "section": "3a. Appending natural join",
+    "text": "3a. Appending natural join\nAppending natural join section does not change the result because, as defined in Chapter 4, a natural join matches tuples on all common attributes and retains only one copy of each common column.\nThe relation takes contains the attributes (course_id, sec_id, semester, year), which form a foreign key referencing the primary key of section. By referential integrity, every tuple in takes must already match a tuple in section ch4 . Therefore, performing natural join section neither removes nor adds tuples—it only adds additional attributes that are not used in the SELECT, WHERE, GROUP BY, or HAVING clauses. Hence, the result of the query remains unchanged."
+  },
+  {
+    "objectID": "Assignment 4.html#b.",
+    "href": "Assignment 4.html#b.",
+    "title": "Assignment 4",
+    "section": "3b.",
+    "text": "3b.\nSELECT ID\nFROM employee NATURAL LEFT OUTER JOIN manages\nWHERE manager_id IS NULL;"
+  },
+  {
     "objectID": "Assignment 1.html#database-systems",
     "href": "Assignment 1.html#database-systems",
     "title": "Assignment 1",
@@ -63,11 +91,18 @@
     "text": "AI for databases\nAI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.\nLarge Language Models also allows user to query a database using plain English instead of writing SQL code. LLM’s can analyze the database schema and map natural language phrases to schema alerts to generate SQL. Traditional methods require users to understand SQL syntax and schema structure, but AI requires no prior experience and can even create query’s faster with fewer mistakes."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "Untitled.html#database-systems",
+    "href": "Untitled.html#database-systems",
+    "title": "test",
+    "section": "Database Systems",
+    "text": "Database Systems"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mireyas1032.github.io",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "doc.html",
@@ -91,39 +126,11 @@
     "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mireyas1032.github.io",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "This is a Quarto\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "Untitled.html#database-systems",
-    "href": "Untitled.html#database-systems",
-    "title": "test",
-    "section": "Database Systems",
-    "text": "Database Systems"
-  },
-  {
-    "objectID": "test.html#quarto",
-    "href": "test.html#quarto",
-    "title": "test",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
-  },
-  {
-    "objectID": "test.html#bullets",
-    "href": "test.html#bullets",
-    "title": "test",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
-  },
-  {
-    "objectID": "test.html#code",
-    "href": "test.html#code",
-    "title": "test",
-    "section": "Code",
-    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "Assignment 3.html#lists",
@@ -187,5 +194,54 @@
     "title": "Assignment 3",
     "section": "Find instructor who has never given an A grade in any course she or he has taught.",
     "text": "Find instructor who has never given an A grade in any course she or he has taught."
+  },
+  {
+    "objectID": "test.html#quarto",
+    "href": "test.html#quarto",
+    "title": "test",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "test.html#bullets",
+    "href": "test.html#bullets",
+    "title": "test",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+  },
+  {
+    "objectID": "test.html#code",
+    "href": "test.html#code",
+    "title": "test",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+  },
+  {
+    "objectID": "Assignment 5.html#medical-e-r-diagram",
+    "href": "Assignment 5.html#medical-e-r-diagram",
+    "title": "Assignment 5",
+    "section": "2. Medical E-R diagram",
+    "text": "2. Medical E-R diagram"
+  },
+  {
+    "objectID": "Assignment 5.html#why-do-we-need-weak-entity-sets",
+    "href": "Assignment 5.html#why-do-we-need-weak-entity-sets",
+    "title": "Assignment 5",
+    "section": "3. Why do we need weak entity sets?",
+    "text": "3. Why do we need weak entity sets?\nWeak entity sets are used because they represent entities whose existence depends on another entity and whose identity is determined using the key of that identifying entity along with a discriminator. Using weak entities allows the database design to model real-world dependencies clearly without introducing artificial keys.\nEx: Section depends on course. The attributes of section alone are not enough to uniquely identify it, so section needs to be identified using course_id."
+  },
+  {
+    "objectID": "Assignment 5.html#a",
+    "href": "Assignment 5.html#a",
+    "title": "Assignment 5",
+    "section": "4a",
+    "text": "4a\nEmployee lives in same city as the company they work for\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works   AS w ON e.ID = w.ID\nJOIN company AS c ON w.company_name = c.company_name\nWHERE e.city = c.city;\nEmployee lives in same city and same street as their manager\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN manages  AS m   ON e.ID = m.ID\nJOIN employee AS mgr ON m.manager_id = mgr.ID\nWHERE e.city = mgr.city\n  AND e.street = mgr.street;\nEmployee earns more than the average salary of employees at their company\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works AS w ON e.ID = w.ID\nWHERE w.salary &gt;\n      (SELECT AVG(w2.salary)\n       FROM works AS w2\n       WHERE w2.company_name = w.company_name);"
+  },
+  {
+    "objectID": "Assignment 5.html#b",
+    "href": "Assignment 5.html#b",
+    "title": "Assignment 5",
+    "section": "4b",
+    "text": "4b\nThe query is wrong because natural join joins tables using all attributes with the same name. In this case, it incorrectly joins section and course on both course_id and title. While the relationship should only use course_id, it’s also using title because both section and course contain that attribute. in order for it to work, the schema needs to explicitly specify the join condition."
   }
 ]

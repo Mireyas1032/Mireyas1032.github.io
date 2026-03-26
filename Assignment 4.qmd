@@ -11,7 +11,6 @@ A strong entity set is an entity set that has a primary key of its own, meaning 
 
 A weak entity set's existence depends on another entity (i.e. identifying entity) and does not have a primary key of its own. Instead, it's identified using the primary key of the strong entity plus a special attribute called a discriminator
 
-
 ```{r}
 library(DiagrammeR)
 
@@ -86,9 +85,10 @@ digraph ER {
 }
 ")
 ```
+
 ## 2.
 
-![](images/Assignment 4.drawio.png)
+![](images/Assignment%204.drawio.png)
 
 ## 3a. Appending natural join
 
@@ -98,9 +98,8 @@ The relation takes contains the attributes (course_id, sec_id, semester, year), 
 
 ## 3b.
 
-```
+```         
 SELECT ID
 FROM employee NATURAL LEFT OUTER JOIN manages
 WHERE manager_id IS NULL;
 ```
-

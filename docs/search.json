@@ -1,136 +1,80 @@
 [
   {
-    "objectID": "Assignment 4.html#strong-v.-weak-entity-set",
-    "href": "Assignment 4.html#strong-v.-weak-entity-set",
-    "title": "Assignment 4",
-    "section": "1. Strong v. Weak Entity Set",
-    "text": "1. Strong v. Weak Entity Set\nA strong entity set is an entity set that has a primary key of its own, meaning its entities can be uniquely identified by their own attributes alone\nA weak entity set’s existence depends on another entity (i.e. identifying entity) and does not have a primary key of its own. Instead, it’s identified using the primary key of the strong entity plus a special attribute called a discriminator"
+    "objectID": "Assignment 6.html#json-websites",
+    "href": "Assignment 6.html#json-websites",
+    "title": "Assignment 6",
+    "section": "JSON Websites",
+    "text": "JSON Websites\nExample: https://jsonplaceholder.typicode.com/\n{\n  \"userId\": 1,\n  \"title\": \"Sample title\"\n}\n\n\nStructure & Composition:\n\nKey-value pairs, lightweight\nNested objects and array\nEasy to read and parase\n\n\nTechnologies/Methods\n\nREST APIs (data via HTTP requests)\nJavaScript, AJAX (dynamic updates)\nUsed in three-tier web architecture (browser ↔︎ server ↔︎ database)"
   },
   {
-    "objectID": "Assignment 4.html#section",
-    "href": "Assignment 4.html#section",
-    "title": "Assignment 4",
-    "section": "2.",
-    "text": "2."
+    "objectID": "Assignment 6.html#xml-website",
+    "href": "Assignment 6.html#xml-website",
+    "title": "Assignment 6",
+    "section": "XML Website",
+    "text": "XML Website\nExample: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml\n&lt;article&gt;\n  &lt;title&gt;Sample Title&lt;/title&gt;\n&lt;/article&gt;\n\n\nStructure & Composition:\n\nTag-based, hierarchical\nSelf-descriptive but verbose\nStrict Syntax\n\n\nTechnologies/Methods\n\nSOAP web services (XML-based communication\nJRSS feeds, enterprise systems\nServer-side processing (JSP, PHP) generates XML/HTML"
   },
   {
-    "objectID": "Assignment 4.html#a.-appending-natural-join",
-    "href": "Assignment 4.html#a.-appending-natural-join",
-    "title": "Assignment 4",
-    "section": "3a. Appending natural join",
-    "text": "3a. Appending natural join\nAppending natural join section does not change the result because, as defined in Chapter 4, a natural join matches tuples on all common attributes and retains only one copy of each common column.\nThe relation takes contains the attributes (course_id, sec_id, semester, year), which form a foreign key referencing the primary key of section. By referential integrity, every tuple in takes must already match a tuple in section ch4 . Therefore, performing natural join section neither removes nor adds tuples—it only adds additional attributes that are not used in the SELECT, WHERE, GROUP BY, or HAVING clauses. Hence, the result of the query remains unchanged."
+    "objectID": "Assignment 6.html#sql-exercise",
+    "href": "Assignment 6.html#sql-exercise",
+    "title": "Assignment 6",
+    "section": "SQL Exercise",
+    "text": "SQL Exercise\ni\nSELECT s.ID\nFROM student s\nLEFT JOIN advisor a\n  ON s.ID = a.s_id\nWHERE a.i_id IS NULL;\nii\nSELECT i.ID, i.name\nFROM instructor i\nJOIN teaches t ON i.ID = t.ID\nJOIN course c ON c.course_id = t.course_id\nWHERE c.dept_name = i.dept_name\nGROUP BY i.ID, i.name\nHAVING COUNT(DISTINCT t.course_id) = (\n    SELECT COUNT(*)\n    FROM course c2\n    WHERE c2.dept_name = i.dept_name\n)\nORDER BY i.name;"
   },
   {
-    "objectID": "Assignment 4.html#b.",
-    "href": "Assignment 4.html#b.",
-    "title": "Assignment 4",
-    "section": "3b.",
-    "text": "3b.\nSELECT ID\nFROM employee NATURAL LEFT OUTER JOIN manages\nWHERE manager_id IS NULL;"
+    "objectID": "Assignment 6.html#r-and-postgresql",
+    "href": "Assignment 6.html#r-and-postgresql",
+    "title": "Assignment 6",
+    "section": "R and PostgreSQL",
+    "text": "R and PostgreSQL\n\nSimple query: fetch all rows/columns in ‘instructor’ and create a data object\n     id           name   dept_name    salary\n1 63395       McKinnon Cybernetics  94333.99\n2 78699          Pingr  Statistics  59303.62\n3 96895           Mird   Marketing 119921.41\n4  4233            Luo     English  88791.45\n5  4034         Murata   Athletics  61387.56\n6 50885 Konstantinides   Languages  32570.50\nAnother query: fetch instructors in ‘Comp. Sci.’ department\n     id     name  dept_name    salary\n1 34175    Bondi Comp. Sci. 115469.11\n2  3335 Bourrier Comp. Sci.  80797.83\n\n\n\nQuery a different table, e.g., ‘student’, and store in an R dataframe\n\n    id       name  dept_name tot_cred\n1 79352      Rumat    Finance      100\n2 76672     Miliko Statistics      116\n3 14182 Moszkowski Civil Eng.       73\n4 44985     Prieto    Biology       91\n5 44271    Sowerby    English      108\n6 40897    Coppens       Math       58"
   },
   {
-    "objectID": "Assignment 1.html#database-systems",
-    "href": "Assignment 1.html#database-systems",
-    "title": "Assignment 1",
-    "section": "Database Systems",
-    "text": "Database Systems\niPERMS (Interactive Personnel Electronic Records Management System)\nA database system used to store and access data related to individual service members, such as service history, evaluations, training records, and official documents. The database allows authorized users to retrieve, update, and maintain records over time, allowing secure access to personnel information across different units and assignments.\nWorkday\nA human resources application that employs a database system to store and manage employee data such as personal information, job roles, payroll details, benefits enrollment, and performance records.The database allows authorized users and employees to access and update information over time.\nNotion\nA productivity app that uses a database system to store and manage persistent data such as notes, task lists, project boards, and user-created tables. The database allows users to create, update, and retrieve structured information across sessions and devices, ensuring data is persistently stored. Notion’s use of relational tables and linked databases supports flexible data organization."
+    "objectID": "Assignment 5.html#medical-e-r-diagram",
+    "href": "Assignment 5.html#medical-e-r-diagram",
+    "title": "Assignment 5",
+    "section": "2. Medical E-R diagram",
+    "text": "2. Medical E-R diagram"
   },
   {
-    "objectID": "Assignment 1.html#domain-project-proposal-1",
-    "href": "Assignment 1.html#domain-project-proposal-1",
-    "title": "Assignment 1",
-    "section": "Domain Project Proposal 1",
-    "text": "Domain Project Proposal 1\nPublic Benefit Access Database\nPurpose: To analyze accessibility of public benefits (housing assistance, food aid, unemployment services) across different demographic and geographic groups to identify gaps and inequities.\n\n\nFunctions:\n\nStore benefit programs and eligibility rules\nTrack application volume and approval rates\nAssociate benefits with ZIP codes or census tracts\nCompare access across demographic indicators\nIdentify under-served areas\n\n\nUser Interface:\nProgram directory: Browse available benefit programs\nApplication view: Displays participation and approval trends\nGeographic comparison table: Compare differences across locations\nEquity analysis dashboard: Visualize disparities in access and outcomes."
+    "objectID": "Assignment 5.html#why-do-we-need-weak-entity-sets",
+    "href": "Assignment 5.html#why-do-we-need-weak-entity-sets",
+    "title": "Assignment 5",
+    "section": "3. Why do we need weak entity sets?",
+    "text": "3. Why do we need weak entity sets?\nWeak entity sets are used because they represent entities whose existence depends on another entity and whose identity is determined using the key of that identifying entity along with a discriminator. Using weak entities allows the database design to model real-world dependencies clearly without introducing artificial keys.\nEx: Section depends on course. The attributes of section alone are not enough to uniquely identify it, so section needs to be identified using course_id."
   },
   {
-    "objectID": "Assignment 1.html#domain-project-proposal-2",
-    "href": "Assignment 1.html#domain-project-proposal-2",
-    "title": "Assignment 1",
-    "section": "Domain Project Proposal 2",
-    "text": "Domain Project Proposal 2\nLitigation Outcomes and Risk Analysis Database\nPurpose: To analyzes publicly available court case data to identify litigation trends and potential legal risk patterns across jurisdictions.\n\n\nFunctions:\n\nStore publicly available case metadata (case type, jurisdiction, etc.)\nRecord case outcomes using simplified categorical labels\nTrack case duration and resolution patterns\nCompare litigation trends across courts and case types\nSupport identification of areas with higher litigation frequency or risk\n\n\nUser Interface\n\nCase Directory: Browse and filter cases by jurisdiction, case type, and status\nOutcome Summary View: Display aggregated case outcome trends\nJurisdiction Comparison Table: Compare litigation patterns across courts Risk Analysis\nDashboard: Visualize high-level trends in case volume, duration, and outcomes"
+    "objectID": "Assignment 5.html#a",
+    "href": "Assignment 5.html#a",
+    "title": "Assignment 5",
+    "section": "4a",
+    "text": "4a\nEmployee lives in same city as the company they work for\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works   AS w ON e.ID = w.ID\nJOIN company AS c ON w.company_name = c.company_name\nWHERE e.city = c.city;\nEmployee lives in same city and same street as their manager\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN manages  AS m   ON e.ID = m.ID\nJOIN employee AS mgr ON m.manager_id = mgr.ID\nWHERE e.city = mgr.city\n  AND e.street = mgr.street;\nEmployee earns more than the average salary of employees at their company\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works AS w ON e.ID = w.ID\nWHERE w.salary &gt;\n      (SELECT AVG(w2.salary)\n       FROM works AS w2\n       WHERE w2.company_name = w.company_name);"
   },
   {
-    "objectID": "Assignment 1.html#domain-project-proposal-3",
-    "href": "Assignment 1.html#domain-project-proposal-3",
-    "title": "Assignment 1",
-    "section": "Domain Project Proposal 3",
-    "text": "Domain Project Proposal 3\nSmall Business Stability Database\nPurpose: Design and implement a database that analyzes local economic conditions affecting small business stability and resilience over time\n\n\nFunctions:\n\nStore small business characteristics (industry type, size, location)\nTrack business openings and closures over time\nRecord economic indicators such as unemployment rates and inflation periods\nAssociate business trends with geographic areas (ZIP codes or census tracts)\nCompare business stability across industries and locations\n\n\nUser Interface\n\nBusiness Directory: Browse businesses by industry and location Economic Indicators\nView: Display selected economic trends over time\nGeographic Comparison Table: Compare business openings and closures across areas\nStability Analysis Dashboard: Visualize business survival and closure patterns"
+    "objectID": "Assignment 5.html#b",
+    "href": "Assignment 5.html#b",
+    "title": "Assignment 5",
+    "section": "4b",
+    "text": "4b\nThe query is wrong because natural join joins tables using all attributes with the same name. In this case, it incorrectly joins section and course on both course_id and title. While the relationship should only use course_id, it’s also using title because both section and course contain that attribute. in order for it to work, the schema needs to explicitly specify the join condition."
   },
   {
-    "objectID": "Assignment 1.html#data-mining",
-    "href": "Assignment 1.html#data-mining",
-    "title": "Assignment 1",
-    "section": "Data Mining",
-    "text": "Data Mining\nData mining allows data interpretation to go beyond table formatting. It allows developers to find patterns and correlations using databases, machine learning, statistical analysis, and most recently AI. It allows organizations to find hidden trends, bottlenecks, and other insights which can serve as tools to solve multiple challenges."
-  },
-  {
-    "objectID": "Assignment 1.html#social-media-information-storage",
-    "href": "Assignment 1.html#social-media-information-storage",
-    "title": "Assignment 1",
-    "section": "Social Media Information Storage",
-    "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
-  },
-  {
-    "objectID": "Assignment 2.html#relation-schema-relation-and-instance",
-    "href": "Assignment 2.html#relation-schema-relation-and-instance",
-    "title": "Assignment 2",
-    "section": "Relation Schema, Relation, and Instance",
-    "text": "Relation Schema, Relation, and Instance\nA relation schema consists of a list of attributes and their corresponding domains. For example, the relation schema of department is:\ndepartment (dept_name, building. budget)\nThe term relation is used to refer to a table. A relation has multiple rows called tuples and columns called attributes. For example, the prereq relation will have a course_id attribute and a prereq_id attribute with multiple tuples showing the ID numbers.\nAn instance refers to a specific instance of a relation containing a specific set of rows. For example: the instance of instructor has 12 tuples corresponding to 12 instructors"
-  },
-  {
-    "objectID": "Assignment 2.html#bank-database-schema",
-    "href": "Assignment 2.html#bank-database-schema",
-    "title": "Assignment 2",
-    "section": "Bank Database Schema",
-    "text": "Bank Database Schema"
-  },
-  {
-    "objectID": "Assignment 2.html#ai-for-databases",
-    "href": "Assignment 2.html#ai-for-databases",
-    "title": "Assignment 2",
-    "section": "AI for databases",
-    "text": "AI for databases\nAI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.\nLarge Language Models also allows user to query a database using plain English instead of writing SQL code. LLM’s can analyze the database schema and map natural language phrases to schema alerts to generate SQL. Traditional methods require users to understand SQL syntax and schema structure, but AI requires no prior experience and can even create query’s faster with fewer mistakes."
-  },
-  {
-    "objectID": "Untitled.html#database-systems",
-    "href": "Untitled.html#database-systems",
+    "objectID": "test.html#quarto",
+    "href": "test.html#quarto",
     "title": "test",
-    "section": "Database Systems",
-    "text": "Database Systems"
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mireyas1032.github.io",
-    "section": "",
-    "text": "This is a Quarto\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "objectID": "test.html#bullets",
+    "href": "test.html#bullets",
+    "title": "test",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
   },
   {
-    "objectID": "doc.html",
-    "href": "doc.html",
-    "title": "doc",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "doc.html#quarto",
-    "href": "doc.html#quarto",
-    "title": "doc",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "doc.html#running-code",
-    "href": "doc.html#running-code",
-    "title": "doc",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "objectID": "test.html#code",
+    "href": "test.html#code",
+    "title": "test",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
   },
   {
     "objectID": "Assignment 3.html#lists",
@@ -196,52 +140,136 @@
     "text": "Find instructor who has never given an A grade in any course she or he has taught."
   },
   {
-    "objectID": "test.html#quarto",
-    "href": "test.html#quarto",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "doc.html",
+    "href": "doc.html",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#quarto",
+    "href": "doc.html#quarto",
+    "title": "doc",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "doc.html#running-code",
+    "href": "doc.html#running-code",
+    "title": "doc",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this new edit:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mireyas1032.github.io",
+    "section": "",
+    "text": "This is a Quarto\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Untitled.html#database-systems",
+    "href": "Untitled.html#database-systems",
     "title": "test",
-    "section": "Quarto",
-    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+    "section": "Database Systems",
+    "text": "Database Systems"
   },
   {
-    "objectID": "test.html#bullets",
-    "href": "test.html#bullets",
-    "title": "test",
-    "section": "Bullets",
-    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+    "objectID": "Assignment 2.html#relation-schema-relation-and-instance",
+    "href": "Assignment 2.html#relation-schema-relation-and-instance",
+    "title": "Assignment 2",
+    "section": "Relation Schema, Relation, and Instance",
+    "text": "Relation Schema, Relation, and Instance\nA relation schema consists of a list of attributes and their corresponding domains. For example, the relation schema of department is:\ndepartment (dept_name, building. budget)\nThe term relation is used to refer to a table. A relation has multiple rows called tuples and columns called attributes. For example, the prereq relation will have a course_id attribute and a prereq_id attribute with multiple tuples showing the ID numbers.\nAn instance refers to a specific instance of a relation containing a specific set of rows. For example: the instance of instructor has 12 tuples corresponding to 12 instructors"
   },
   {
-    "objectID": "test.html#code",
-    "href": "test.html#code",
-    "title": "test",
-    "section": "Code",
-    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+    "objectID": "Assignment 2.html#bank-database-schema",
+    "href": "Assignment 2.html#bank-database-schema",
+    "title": "Assignment 2",
+    "section": "Bank Database Schema",
+    "text": "Bank Database Schema"
   },
   {
-    "objectID": "Assignment 5.html#medical-e-r-diagram",
-    "href": "Assignment 5.html#medical-e-r-diagram",
-    "title": "Assignment 5",
-    "section": "2. Medical E-R diagram",
-    "text": "2. Medical E-R diagram"
+    "objectID": "Assignment 2.html#ai-for-databases",
+    "href": "Assignment 2.html#ai-for-databases",
+    "title": "Assignment 2",
+    "section": "AI for databases",
+    "text": "AI for databases\nAI can clean data by detecting missing values, incorrect data, and inconsistent formats. AI can detect unusual patterns automticaly while traditional methods rely on fixed rules. Not only can it detect, but it can also suggest corrections based on context. The same can be done with duplicate records. AI can learn patterns from the data to detect duplicates, while traditional methods require manually defined rules.\nLarge Language Models also allows user to query a database using plain English instead of writing SQL code. LLM’s can analyze the database schema and map natural language phrases to schema alerts to generate SQL. Traditional methods require users to understand SQL syntax and schema structure, but AI requires no prior experience and can even create query’s faster with fewer mistakes."
   },
   {
-    "objectID": "Assignment 5.html#why-do-we-need-weak-entity-sets",
-    "href": "Assignment 5.html#why-do-we-need-weak-entity-sets",
-    "title": "Assignment 5",
-    "section": "3. Why do we need weak entity sets?",
-    "text": "3. Why do we need weak entity sets?\nWeak entity sets are used because they represent entities whose existence depends on another entity and whose identity is determined using the key of that identifying entity along with a discriminator. Using weak entities allows the database design to model real-world dependencies clearly without introducing artificial keys.\nEx: Section depends on course. The attributes of section alone are not enough to uniquely identify it, so section needs to be identified using course_id."
+    "objectID": "Assignment 1.html#database-systems",
+    "href": "Assignment 1.html#database-systems",
+    "title": "Assignment 1",
+    "section": "Database Systems",
+    "text": "Database Systems\niPERMS (Interactive Personnel Electronic Records Management System)\nA database system used to store and access data related to individual service members, such as service history, evaluations, training records, and official documents. The database allows authorized users to retrieve, update, and maintain records over time, allowing secure access to personnel information across different units and assignments.\nWorkday\nA human resources application that employs a database system to store and manage employee data such as personal information, job roles, payroll details, benefits enrollment, and performance records.The database allows authorized users and employees to access and update information over time.\nNotion\nA productivity app that uses a database system to store and manage persistent data such as notes, task lists, project boards, and user-created tables. The database allows users to create, update, and retrieve structured information across sessions and devices, ensuring data is persistently stored. Notion’s use of relational tables and linked databases supports flexible data organization."
   },
   {
-    "objectID": "Assignment 5.html#a",
-    "href": "Assignment 5.html#a",
-    "title": "Assignment 5",
-    "section": "4a",
-    "text": "4a\nEmployee lives in same city as the company they work for\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works   AS w ON e.ID = w.ID\nJOIN company AS c ON w.company_name = c.company_name\nWHERE e.city = c.city;\nEmployee lives in same city and same street as their manager\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN manages  AS m   ON e.ID = m.ID\nJOIN employee AS mgr ON m.manager_id = mgr.ID\nWHERE e.city = mgr.city\n  AND e.street = mgr.street;\nEmployee earns more than the average salary of employees at their company\nSELECT e.ID, e.person_name\nFROM employee AS e\nJOIN works AS w ON e.ID = w.ID\nWHERE w.salary &gt;\n      (SELECT AVG(w2.salary)\n       FROM works AS w2\n       WHERE w2.company_name = w.company_name);"
+    "objectID": "Assignment 1.html#domain-project-proposal-1",
+    "href": "Assignment 1.html#domain-project-proposal-1",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 1",
+    "text": "Domain Project Proposal 1\nPublic Benefit Access Database\nPurpose: To analyze accessibility of public benefits (housing assistance, food aid, unemployment services) across different demographic and geographic groups to identify gaps and inequities.\n\n\nFunctions:\n\nStore benefit programs and eligibility rules\nTrack application volume and approval rates\nAssociate benefits with ZIP codes or census tracts\nCompare access across demographic indicators\nIdentify under-served areas\n\n\nUser Interface:\nProgram directory: Browse available benefit programs\nApplication view: Displays participation and approval trends\nGeographic comparison table: Compare differences across locations\nEquity analysis dashboard: Visualize disparities in access and outcomes."
   },
   {
-    "objectID": "Assignment 5.html#b",
-    "href": "Assignment 5.html#b",
-    "title": "Assignment 5",
-    "section": "4b",
-    "text": "4b\nThe query is wrong because natural join joins tables using all attributes with the same name. In this case, it incorrectly joins section and course on both course_id and title. While the relationship should only use course_id, it’s also using title because both section and course contain that attribute. in order for it to work, the schema needs to explicitly specify the join condition."
+    "objectID": "Assignment 1.html#domain-project-proposal-2",
+    "href": "Assignment 1.html#domain-project-proposal-2",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 2",
+    "text": "Domain Project Proposal 2\nLitigation Outcomes and Risk Analysis Database\nPurpose: To analyzes publicly available court case data to identify litigation trends and potential legal risk patterns across jurisdictions.\n\n\nFunctions:\n\nStore publicly available case metadata (case type, jurisdiction, etc.)\nRecord case outcomes using simplified categorical labels\nTrack case duration and resolution patterns\nCompare litigation trends across courts and case types\nSupport identification of areas with higher litigation frequency or risk\n\n\nUser Interface\n\nCase Directory: Browse and filter cases by jurisdiction, case type, and status\nOutcome Summary View: Display aggregated case outcome trends\nJurisdiction Comparison Table: Compare litigation patterns across courts Risk Analysis\nDashboard: Visualize high-level trends in case volume, duration, and outcomes"
+  },
+  {
+    "objectID": "Assignment 1.html#domain-project-proposal-3",
+    "href": "Assignment 1.html#domain-project-proposal-3",
+    "title": "Assignment 1",
+    "section": "Domain Project Proposal 3",
+    "text": "Domain Project Proposal 3\nSmall Business Stability Database\nPurpose: Design and implement a database that analyzes local economic conditions affecting small business stability and resilience over time\n\n\nFunctions:\n\nStore small business characteristics (industry type, size, location)\nTrack business openings and closures over time\nRecord economic indicators such as unemployment rates and inflation periods\nAssociate business trends with geographic areas (ZIP codes or census tracts)\nCompare business stability across industries and locations\n\n\nUser Interface\n\nBusiness Directory: Browse businesses by industry and location Economic Indicators\nView: Display selected economic trends over time\nGeographic Comparison Table: Compare business openings and closures across areas\nStability Analysis Dashboard: Visualize business survival and closure patterns"
+  },
+  {
+    "objectID": "Assignment 1.html#data-mining",
+    "href": "Assignment 1.html#data-mining",
+    "title": "Assignment 1",
+    "section": "Data Mining",
+    "text": "Data Mining\nData mining allows data interpretation to go beyond table formatting. It allows developers to find patterns and correlations using databases, machine learning, statistical analysis, and most recently AI. It allows organizations to find hidden trends, bottlenecks, and other insights which can serve as tools to solve multiple challenges."
+  },
+  {
+    "objectID": "Assignment 1.html#social-media-information-storage",
+    "href": "Assignment 1.html#social-media-information-storage",
+    "title": "Assignment 1",
+    "section": "Social Media Information Storage",
+    "text": "Social Media Information Storage\nComment Table\nThe comment relation stores comments made by users on a post. The attributes include comment_id as the primary key, user_id as a foreign key referencing the User relation, and post_id as a foreign key referencing the Post relation, the comment text, and time stamp.\nFollow Table\nThe follow relation stores information about the relationship between users, such as when one user follows another. The attributes include follower_id, and followed_id, which are both foreign keys referencing the user relation.\nMessage Table\nThe message relation stores private messages sent between users on the social media platform. Attributes include message_id as the primary key, sender_id and receiver_id as foreign keys referencing the user relation, the message content, and time stamp."
+  },
+  {
+    "objectID": "Assignment 4.html#strong-v.-weak-entity-set",
+    "href": "Assignment 4.html#strong-v.-weak-entity-set",
+    "title": "Assignment 4",
+    "section": "1. Strong v. Weak Entity Set",
+    "text": "1. Strong v. Weak Entity Set\nA strong entity set is an entity set that has a primary key of its own, meaning its entities can be uniquely identified by their own attributes alone\nA weak entity set’s existence depends on another entity (i.e. identifying entity) and does not have a primary key of its own. Instead, it’s identified using the primary key of the strong entity plus a special attribute called a discriminator"
+  },
+  {
+    "objectID": "Assignment 4.html#section",
+    "href": "Assignment 4.html#section",
+    "title": "Assignment 4",
+    "section": "2.",
+    "text": "2."
+  },
+  {
+    "objectID": "Assignment 4.html#a.-appending-natural-join",
+    "href": "Assignment 4.html#a.-appending-natural-join",
+    "title": "Assignment 4",
+    "section": "3a. Appending natural join",
+    "text": "3a. Appending natural join\nAppending natural join section does not change the result because, as defined in Chapter 4, a natural join matches tuples on all common attributes and retains only one copy of each common column.\nThe relation takes contains the attributes (course_id, sec_id, semester, year), which form a foreign key referencing the primary key of section. By referential integrity, every tuple in takes must already match a tuple in section ch4 . Therefore, performing natural join section neither removes nor adds tuples—it only adds additional attributes that are not used in the SELECT, WHERE, GROUP BY, or HAVING clauses. Hence, the result of the query remains unchanged."
+  },
+  {
+    "objectID": "Assignment 4.html#b.",
+    "href": "Assignment 4.html#b.",
+    "title": "Assignment 4",
+    "section": "3b.",
+    "text": "3b.\nSELECT ID\nFROM employee NATURAL LEFT OUTER JOIN manages\nWHERE manager_id IS NULL;"
   }
 ]

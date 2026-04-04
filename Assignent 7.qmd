@@ -486,6 +486,10 @@ WHERE d.dept_count >= 3
 
 #### New Execution Plan
 
+![](images/NEW Q5 explain 1.png)
+
+![](images/NEW Q5 explain 2.png)
+
 #### Performance Comparison
 
 | Metric               | Before   | After      | Change |

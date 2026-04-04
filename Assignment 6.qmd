@@ -103,7 +103,7 @@ ORDER BY i.name;
 
 (a) Simple query: fetch all rows/columns in 'instructor' and create a data object
 
-    ``` R
+    ``` r
          id           name   dept_name    salary
     1 63395       McKinnon Cybernetics  94333.99
     2 78699          Pingr  Statistics  59303.62
@@ -115,7 +115,7 @@ ORDER BY i.name;
 
 (b) Another query: fetch instructors in 'Comp. Sci.' department
 
-    ``` R
+    ``` r
          id     name  dept_name    salary
     1 34175    Bondi Comp. Sci. 115469.11
     2  3335 Bourrier Comp. Sci.  80797.83
@@ -125,7 +125,7 @@ ORDER BY i.name;
 
 (c) Query a different table, e.g., 'student', and store in an R dataframe
 
-``` R
+``` r
     id       name  dept_name tot_cred
 1 79352      Rumat    Finance      100
 2 76672     Miliko Statistics      116

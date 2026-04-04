@@ -1,0 +1,499 @@
+---
+title: "Assignment 7 (AI Lab 1)"
+format: html
+engine: knitr
+---
+
+## Part 1: Query Generation
+
+### Query 1 — Aggregation
+
+#### Prompt:
+
+"Given the following PostgreSQL database schema: create table classroom 2 (building varchar(15), 3 room_number varchar(7), 4 capacity numeric(4,0), 5 primary key (building, room_number) 6 ); 7 8 create table department 9 (dept_name varchar(20), 10 building varchar(15), 11 budget numeric(12,2) check (budget \> 0), 12 primary key (dept_name) 13 ); 14 15 create table course 16 (course_id varchar(8), 17 title varchar(50), 18 dept_name varchar(20), 19 credits numeric(2,0) check (credits \> 0), 20 primary key (course_id), 21 foreign key (dept_name) references department (dept_name) 22 on delete set null 23 ); 24 25 create table instructor 26 (ID varchar(5), 27 name varchar(20) not null, 28 dept_name varchar(20), 29 salary numeric(8,2) check (salary \> 29000), 30 primary key (ID), 31 foreign key (dept_name) references department (dept_name) 32 on delete set null 33 ); 34 35 create table section 36 (course_id varchar(8), 37 sec_id varchar(8), 38 semester varchar(6) 39 check (semester in ('Fall', 'Winter', 'Spring', 'Summer')), 40 year numeric(4,0) check (year \> 1701 and year \< 2100), 41 building varchar(15), 42 room_number varchar(7), 43 time_slot_id varchar(4), 44 primary key (course_id, sec_id, semester, year), 45 foreign key (course_id) references course (course_id) 46 on delete cascade, 47 foreign key (building, room_number) 48 references classroom (building, room_number) 49 on delete set null 50 ); 51 52 create table teaches 53 (ID varchar(5), 54 course_id varchar(8), 55 sec_id varchar(8), 56 semester varchar(6), 57 year numeric(4,0), 58 primary key (ID, course_id, sec_id, semester, year), 59 foreign key (course_id, sec_id, semester, year) 60 references section (course_id, sec_id, semester, year) 61 on delete cascade, 62 foreign key (ID) references instructor (ID) 63 on delete cascade 64 ); 65 66 create table student 67 (ID varchar(5), 68 name varchar(20) not null, 69 dept_name varchar(20), 70 tot_cred numeric(3,0) check (tot_cred \>= 0), 71 primary key (ID), 72 foreign key (dept_name) references department (dept_name) 73 on delete set null 74 ); 75 76 create table takes 77 (ID varchar(5), 78 course_id varchar(8), 79 sec_id varchar(8), 80 semester varchar(6), 81 year numeric(4,0), 82 grade varchar(2), 83 primary key (ID, course_id, sec_id, semester, year), 84 foreign key (course_id, sec_id, semester, year) 85 references section (course_id, sec_id, semester, year) 86 on delete cascade, 87 foreign key (ID) references student (ID) 88 on delete cascade 89 ); 90 91 create table advisor 92 (s_ID varchar(5), 93 i_ID varchar(5), 94 primary key (s_ID), 95 foreign key (i_ID) references instructor (ID) 96 on delete set null, 97 foreign key (s_ID) references student (ID) 98 on delete cascade 99 ); 100 101 create table time_slot 102 (time_slot_id varchar(4), 103 day varchar(1), 104 start_hr numeric(2) check (start_hr \>= 0 and start_hr \< 24), 105 start_min numeric(2) check (start_min \>= 0 and start_min \< 60), 106 end_hr numeric(2) check (end_hr \>= 0 and end_hr \< 24), 107 end_min numeric(2) check (end_min \>= 0 and end_min \< 60), 108 primary key (time_slot_id, day, start_hr, start_min) 109 ); 110 111 create table prereq 112 (course_id varchar(8), 113 prereq_id varchar(8), 114 primary key (course_id, prereq_id), 115 foreign key (course_id) references course (course_id) 116 on delete cascade, 117 foreign key (prereq_id) references course (course_id) 118 );
+
+The database contains approximately: - 2,000 students - 30,000 enrollment records in "takes" - 200 courses - 100 sections - 50 instructors - 20 departments
+
+Write a SQL query to: Find the total number of course enrollments and the average total credits (tot_cred) of students in each department. Rank departments from highest enrollment count to lowest. Please use standard PostgreSQL syntax."
+
+#### AI-Generated SQL:
+
+```         
+SELECT
+    s.dept_name,
+    COUNT(*) AS total_enrollments,
+    AVG(s.tot_cred) AS avg_total_credits
+FROM student AS s
+JOIN takes AS t
+    ON s.ID = t.ID
+GROUP BY s.dept_name
+ORDER BY total_enrollments DESC;
+```
+
+#### Note:
+
+Used ChatGPT 5.3 March 31, 2026
+
+### **Query 2 — Multi-Table Join**
+
+#### Prompt:
+
+Given the following PostgreSQL database schema: create table classroom 2 (building varchar(15), 3 room_number varchar(7), 4 capacity numeric(4,0), 5 primary key (building, room_number) 6 ); 7 8 create table department 9 (dept_name varchar(20), 10 building varchar(15), 11 budget numeric(12,2) check (budget \> 0), 12 primary key (dept_name) 13 ); 14 15 create table course 16 (course_id varchar(8), 17 title varchar(50), 18 dept_name varchar(20), 19 credits numeric(2,0) check (credits \> 0), 20 primary key (course_id), 21 foreign key (dept_name) references department (dept_name) 22 on delete set null 23 ); 24 25 create table instructor 26 (ID varchar(5), 27 name varchar(20) not null, 28 dept_name varchar(20), 29 salary numeric(8,2) check (salary \> 29000), 30 primary key (ID), 31 foreign key (dept_name) references department (dept_name) 32 on delete set null 33 ); 34 35 create table section 36 (course_id varchar(8), 37 sec_id varchar(8), 38 semester varchar(6) 39 check (semester in ('Fall', 'Winter', 'Spring', 'Summer')), 40 year numeric(4,0) check (year \> 1701 and year \< 2100), 41 building varchar(15), 42 room_number varchar(7), 43 time_slot_id varchar(4), 44 primary key (course_id, sec_id, semester, year), 45 foreign key (course_id) references course (course_id) 46 on delete cascade, 47 foreign key (building, room_number) 48 references classroom (building, room_number) 49 on delete set null 50 ); 51 52 create table teaches 53 (ID varchar(5), 54 course_id varchar(8), 55 sec_id varchar(8), 56 semester varchar(6), 57 year numeric(4,0), 58 primary key (ID, course_id, sec_id, semester, year), 59 foreign key (course_id, sec_id, semester, year) 60 references section (course_id, sec_id, semester, year) 61 on delete cascade, 62 foreign key (ID) references instructor (ID) 63 on delete cascade 64 ); 65 66 create table student 67 (ID varchar(5), 68 name varchar(20) not null, 69 dept_name varchar(20), 70 tot_cred numeric(3,0) check (tot_cred \>= 0), 71 primary key (ID), 72 foreign key (dept_name) references department (dept_name) 73 on delete set null 74 ); 75 76 create table takes 77 (ID varchar(5), 78 course_id varchar(8), 79 sec_id varchar(8), 80 semester varchar(6), 81 year numeric(4,0), 82 grade varchar(2), 83 primary key (ID, course_id, sec_id, semester, year), 84 foreign key (course_id, sec_id, semester, year) 85 references section (course_id, sec_id, semester, year) 86 on delete cascade, 87 foreign key (ID) references student (ID) 88 on delete cascade 89 ); 90 91 create table advisor 92 (s_ID varchar(5), 93 i_ID varchar(5), 94 primary key (s_ID), 95 foreign key (i_ID) references instructor (ID) 96 on delete set null, 97 foreign key (s_ID) references student (ID) 98 on delete cascade 99 ); 100 101 create table time_slot 102 (time_slot_id varchar(4), 103 day varchar(1), 104 start_hr numeric(2) check (start_hr \>= 0 and start_hr \< 24), 105 start_min numeric(2) check (start_min \>= 0 and start_min \< 60), 106 end_hr numeric(2) check (end_hr \>= 0 and end_hr \< 24), 107 end_min numeric(2) check (end_min \>= 0 and end_min \< 60), 108 primary key (time_slot_id, day, start_hr, start_min) 109 ); 110 111 create table prereq 112 (course_id varchar(8), 113 prereq_id varchar(8), 114 primary key (course_id, prereq_id), 115 foreign key (course_id) references course (course_id) 116 on delete cascade, 117 foreign key (prereq_id) references course (course_id) 118 );
+
+The database contains approximately: - 2,000 students - 30,000 enrollment records in "takes" - 200 courses - 100 sections - 50 instructors - 20 departments
+
+Write a SQL query to: For each instructor, list their name, department, the courses they teach, the semester and year, and the number of students enrolled in each of their sections. Include only sections with at least 10 students. Please use standard PostgreSQL syntax.
+
+#### AI-Generated SQL:
+
+```         
+SELECT
+    i.name AS instructor_name,
+    i.dept_name AS instructor_department,
+    c.course_id,
+    c.title AS course_title,
+    s.sec_id,
+    s.semester,
+    s.year,
+    COUNT(tk.ID) AS enrolled_students
+FROM instructor AS i
+JOIN teaches AS te
+    ON i.ID = te.ID
+JOIN section AS s
+    ON te.course_id = s.course_id
+   AND te.sec_id = s.sec_id
+   AND te.semester = s.semester
+   AND te.year = s.year
+JOIN course AS c
+    ON s.course_id = c.course_id
+JOIN takes AS tk
+    ON s.course_id = tk.course_id
+   AND s.sec_id = tk.sec_id
+   AND s.semester = tk.semester
+   AND s.year = tk.year
+GROUP BY
+    i.ID,
+    i.name,
+    i.dept_name,
+    c.course_id,
+    c.title,
+    s.sec_id,
+    s.semester,
+    s.year
+HAVING COUNT(tk.ID) >= 10
+ORDER BY
+    i.name,
+    s.year,
+    s.semester,
+    c.course_id,
+    s.sec_id;
+```
+
+#### Note:
+
+Used ChatGPT 5.3 April 1, 2026
+
+### **Query 3 —** Correlated Subquery
+
+#### Prompt:
+
+Given the following PostgreSQL database schema: create table classroom 2 (building varchar(15), 3 room_number varchar(7), 4 capacity numeric(4,0), 5 primary key (building, room_number) 6 ); 7 8 create table department 9 (dept_name varchar(20), 10 building varchar(15), 11 budget numeric(12,2) check (budget \> 0), 12 primary key (dept_name) 13 ); 14 15 create table course 16 (course_id varchar(8), 17 title varchar(50), 18 dept_name varchar(20), 19 credits numeric(2,0) check (credits \> 0), 20 primary key (course_id), 21 foreign key (dept_name) references department (dept_name) 22 on delete set null 23 ); 24 25 create table instructor 26 (ID varchar(5), 27 name varchar(20) not null, 28 dept_name varchar(20), 29 salary numeric(8,2) check (salary \> 29000), 30 primary key (ID), 31 foreign key (dept_name) references department (dept_name) 32 on delete set null 33 ); 34 35 create table section 36 (course_id varchar(8), 37 sec_id varchar(8), 38 semester varchar(6) 39 check (semester in ('Fall', 'Winter', 'Spring', 'Summer')), 40 year numeric(4,0) check (year \> 1701 and year \< 2100), 41 building varchar(15), 42 room_number varchar(7), 43 time_slot_id varchar(4), 44 primary key (course_id, sec_id, semester, year), 45 foreign key (course_id) references course (course_id) 46 on delete cascade, 47 foreign key (building, room_number) 48 references classroom (building, room_number) 49 on delete set null 50 ); 51 52 create table teaches 53 (ID varchar(5), 54 course_id varchar(8), 55 sec_id varchar(8), 56 semester varchar(6), 57 year numeric(4,0), 58 primary key (ID, course_id, sec_id, semester, year), 59 foreign key (course_id, sec_id, semester, year) 60 references section (course_id, sec_id, semester, year) 61 on delete cascade, 62 foreign key (ID) references instructor (ID) 63 on delete cascade 64 ); 65 66 create table student 67 (ID varchar(5), 68 name varchar(20) not null, 69 dept_name varchar(20), 70 tot_cred numeric(3,0) check (tot_cred \>= 0), 71 primary key (ID), 72 foreign key (dept_name) references department (dept_name) 73 on delete set null 74 ); 75 76 create table takes 77 (ID varchar(5), 78 course_id varchar(8), 79 sec_id varchar(8), 80 semester varchar(6), 81 year numeric(4,0), 82 grade varchar(2), 83 primary key (ID, course_id, sec_id, semester, year), 84 foreign key (course_id, sec_id, semester, year) 85 references section (course_id, sec_id, semester, year) 86 on delete cascade, 87 foreign key (ID) references student (ID) 88 on delete cascade 89 ); 90 91 create table advisor 92 (s_ID varchar(5), 93 i_ID varchar(5), 94 primary key (s_ID), 95 foreign key (i_ID) references instructor (ID) 96 on delete set null, 97 foreign key (s_ID) references student (ID) 98 on delete cascade 99 ); 100 101 create table time_slot 102 (time_slot_id varchar(4), 103 day varchar(1), 104 start_hr numeric(2) check (start_hr \>= 0 and start_hr \< 24), 105 start_min numeric(2) check (start_min \>= 0 and start_min \< 60), 106 end_hr numeric(2) check (end_hr \>= 0 and end_hr \< 24), 107 end_min numeric(2) check (end_min \>= 0 and end_min \< 60), 108 primary key (time_slot_id, day, start_hr, start_min) 109 ); 110 111 create table prereq 112 (course_id varchar(8), 113 prereq_id varchar(8), 114 primary key (course_id, prereq_id), 115 foreign key (course_id) references course (course_id) 116 on delete cascade, 117 foreign key (prereq_id) references course (course_id) 118 );
+
+The database contains approximately: - 2,000 students - 30,000 enrollment records in "takes" - 200 courses - 100 sections - 50 instructors - 20 departments
+
+Write a SQL query to: Find all courses where every section ever offered had at least one student who received an ‘A’ grade. Please use standard PostgreSQL syntax.
+
+#### AI-Generated SQL:
+
+```         
+SELECT c.course_id, c.title
+FROM course AS c
+WHERE EXISTS (
+    SELECT 1
+    FROM section AS s
+    WHERE s.course_id = c.course_id
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM section AS s
+    WHERE s.course_id = c.course_id
+      AND NOT EXISTS (
+          SELECT 1
+          FROM takes AS t
+          WHERE t.course_id = s.course_id
+            AND t.sec_id    = s.sec_id
+            AND t.semester  = s.semester
+            AND t.year      = s.year
+            AND t.grade     = 'A'
+      )
+);
+```
+
+#### Note:
+
+Used ChatGPT 5.3 April 1, 2026
+
+### **Query 4 —** Window Function
+
+#### Prompt:
+
+Given the following PostgreSQL database schema: create table classroom 2 (building varchar(15), 3 room_number varchar(7), 4 capacity numeric(4,0), 5 primary key (building, room_number) 6 ); 7 8 create table department 9 (dept_name varchar(20), 10 building varchar(15), 11 budget numeric(12,2) check (budget \> 0), 12 primary key (dept_name) 13 ); 14 15 create table course 16 (course_id varchar(8), 17 title varchar(50), 18 dept_name varchar(20), 19 credits numeric(2,0) check (credits \> 0), 20 primary key (course_id), 21 foreign key (dept_name) references department (dept_name) 22 on delete set null 23 ); 24 25 create table instructor 26 (ID varchar(5), 27 name varchar(20) not null, 28 dept_name varchar(20), 29 salary numeric(8,2) check (salary \> 29000), 30 primary key (ID), 31 foreign key (dept_name) references department (dept_name) 32 on delete set null 33 ); 34 35 create table section 36 (course_id varchar(8), 37 sec_id varchar(8), 38 semester varchar(6) 39 check (semester in ('Fall', 'Winter', 'Spring', 'Summer')), 40 year numeric(4,0) check (year \> 1701 and year \< 2100), 41 building varchar(15), 42 room_number varchar(7), 43 time_slot_id varchar(4), 44 primary key (course_id, sec_id, semester, year), 45 foreign key (course_id) references course (course_id) 46 on delete cascade, 47 foreign key (building, room_number) 48 references classroom (building, room_number) 49 on delete set null 50 ); 51 52 create table teaches 53 (ID varchar(5), 54 course_id varchar(8), 55 sec_id varchar(8), 56 semester varchar(6), 57 year numeric(4,0), 58 primary key (ID, course_id, sec_id, semester, year), 59 foreign key (course_id, sec_id, semester, year) 60 references section (course_id, sec_id, semester, year) 61 on delete cascade, 62 foreign key (ID) references instructor (ID) 63 on delete cascade 64 ); 65 66 create table student 67 (ID varchar(5), 68 name varchar(20) not null, 69 dept_name varchar(20), 70 tot_cred numeric(3,0) check (tot_cred \>= 0), 71 primary key (ID), 72 foreign key (dept_name) references department (dept_name) 73 on delete set null 74 ); 75 76 create table takes 77 (ID varchar(5), 78 course_id varchar(8), 79 sec_id varchar(8), 80 semester varchar(6), 81 year numeric(4,0), 82 grade varchar(2), 83 primary key (ID, course_id, sec_id, semester, year), 84 foreign key (course_id, sec_id, semester, year) 85 references section (course_id, sec_id, semester, year) 86 on delete cascade, 87 foreign key (ID) references student (ID) 88 on delete cascade 89 ); 90 91 create table advisor 92 (s_ID varchar(5), 93 i_ID varchar(5), 94 primary key (s_ID), 95 foreign key (i_ID) references instructor (ID) 96 on delete set null, 97 foreign key (s_ID) references student (ID) 98 on delete cascade 99 ); 100 101 create table time_slot 102 (time_slot_id varchar(4), 103 day varchar(1), 104 start_hr numeric(2) check (start_hr \>= 0 and start_hr \< 24), 105 start_min numeric(2) check (start_min \>= 0 and start_min \< 60), 106 end_hr numeric(2) check (end_hr \>= 0 and end_hr \< 24), 107 end_min numeric(2) check (end_min \>= 0 and end_min \< 60), 108 primary key (time_slot_id, day, start_hr, start_min) 109 ); 110 111 create table prereq 112 (course_id varchar(8), 113 prereq_id varchar(8), 114 primary key (course_id, prereq_id), 115 foreign key (course_id) references course (course_id) 116 on delete cascade, 117 foreign key (prereq_id) references course (course_id) 118 );
+
+The database contains approximately: - 2,000 students - 30,000 enrollment records in "takes" - 200 courses - 100 sections - 50 instructors - 20 departments
+
+Write a SQL query to: “For each department, rank instructors by salary from highest to lowest. Show the instructor’s name, department, salary, their rank within the department, and what percentile they fall into.” Please use standard PostgreSQL syntax.
+
+#### AI-Generated SQL:
+
+```         
+SELECT
+    name,
+    dept_name AS department,
+    salary,
+    RANK() OVER (
+        PARTITION BY dept_name
+        ORDER BY salary DESC
+    ) AS salary_rank,
+    ROUND(
+        (100 * PERCENT_RANK() OVER (
+            PARTITION BY dept_name
+            ORDER BY salary DESC
+        ))::numeric,
+        2
+    ) AS percentile_in_department
+FROM instructor
+WHERE dept_name IS NOT NULL
+ORDER BY dept_name, salary_rank, name;
+```
+
+#### Note:
+
+Used ChatGPT 5.3 April 1, 2026
+
+### **Query 5 —** Complex Query
+
+#### Prompt:
+
+Given the following PostgreSQL database schema: create table classroom 2 (building varchar(15), 3 room_number varchar(7), 4 capacity numeric(4,0), 5 primary key (building, room_number) 6 ); 7 8 create table department 9 (dept_name varchar(20), 10 building varchar(15), 11 budget numeric(12,2) check (budget \> 0), 12 primary key (dept_name) 13 ); 14 15 create table course 16 (course_id varchar(8), 17 title varchar(50), 18 dept_name varchar(20), 19 credits numeric(2,0) check (credits \> 0), 20 primary key (course_id), 21 foreign key (dept_name) references department (dept_name) 22 on delete set null 23 ); 24 25 create table instructor 26 (ID varchar(5), 27 name varchar(20) not null, 28 dept_name varchar(20), 29 salary numeric(8,2) check (salary \> 29000), 30 primary key (ID), 31 foreign key (dept_name) references department (dept_name) 32 on delete set null 33 ); 34 35 create table section 36 (course_id varchar(8), 37 sec_id varchar(8), 38 semester varchar(6) 39 check (semester in ('Fall', 'Winter', 'Spring', 'Summer')), 40 year numeric(4,0) check (year \> 1701 and year \< 2100), 41 building varchar(15), 42 room_number varchar(7), 43 time_slot_id varchar(4), 44 primary key (course_id, sec_id, semester, year), 45 foreign key (course_id) references course (course_id) 46 on delete cascade, 47 foreign key (building, room_number) 48 references classroom (building, room_number) 49 on delete set null 50 ); 51 52 create table teaches 53 (ID varchar(5), 54 course_id varchar(8), 55 sec_id varchar(8), 56 semester varchar(6), 57 year numeric(4,0), 58 primary key (ID, course_id, sec_id, semester, year), 59 foreign key (course_id, sec_id, semester, year) 60 references section (course_id, sec_id, semester, year) 61 on delete cascade, 62 foreign key (ID) references instructor (ID) 63 on delete cascade 64 ); 65 66 create table student 67 (ID varchar(5), 68 name varchar(20) not null, 69 dept_name varchar(20), 70 tot_cred numeric(3,0) check (tot_cred \>= 0), 71 primary key (ID), 72 foreign key (dept_name) references department (dept_name) 73 on delete set null 74 ); 75 76 create table takes 77 (ID varchar(5), 78 course_id varchar(8), 79 sec_id varchar(8), 80 semester varchar(6), 81 year numeric(4,0), 82 grade varchar(2), 83 primary key (ID, course_id, sec_id, semester, year), 84 foreign key (course_id, sec_id, semester, year) 85 references section (course_id, sec_id, semester, year) 86 on delete cascade, 87 foreign key (ID) references student (ID) 88 on delete cascade 89 ); 90 91 create table advisor 92 (s_ID varchar(5), 93 i_ID varchar(5), 94 primary key (s_ID), 95 foreign key (i_ID) references instructor (ID) 96 on delete set null, 97 foreign key (s_ID) references student (ID) 98 on delete cascade 99 ); 100 101 create table time_slot 102 (time_slot_id varchar(4), 103 day varchar(1), 104 start_hr numeric(2) check (start_hr \>= 0 and start_hr \< 24), 105 start_min numeric(2) check (start_min \>= 0 and start_min \< 60), 106 end_hr numeric(2) check (end_hr \>= 0 and end_hr \< 24), 107 end_min numeric(2) check (end_min \>= 0 and end_min \< 60), 108 primary key (time_slot_id, day, start_hr, start_min) 109 ); 110 111 create table prereq 112 (course_id varchar(8), 113 prereq_id varchar(8), 114 primary key (course_id, prereq_id), 115 foreign key (course_id) references course (course_id) 116 on delete cascade, 117 foreign key (prereq_id) references course (course_id) 118 );
+
+The database contains approximately: - 2,000 students - 30,000 enrollment records in "takes" - 200 courses - 100 sections - 50 instructors - 20 departments
+
+Write a SQL query to: “Find students who have taken courses offered by at least 3 different departments but have never taken a course taught by their own advisor.” Please use standard PostgreSQL syntax.
+
+#### AI-Generated SQL:
+
+```         
+SELECT s.ID, s.name
+FROM student AS s
+JOIN takes AS t
+  ON t.ID = s.ID
+JOIN course AS c
+  ON c.course_id = t.course_id
+GROUP BY s.ID, s.name
+HAVING COUNT(DISTINCT c.dept_name) >= 3
+   AND NOT EXISTS (
+       SELECT 1
+       FROM advisor AS a
+       JOIN teaches AS te
+         ON te.ID = a.i_ID
+       JOIN takes AS t2
+         ON t2.ID = a.s_ID
+        AND t2.course_id = te.course_id
+        AND t2.sec_id = te.sec_id
+        AND t2.semester = te.semester
+        AND t2.year = te.year
+       WHERE a.s_ID = s.ID
+   );
+```
+
+#### Note:
+
+Used ChatGPT 5.3 April 1, 2026
+
+## Part 2: Execution Plan Analysis
+
+### Query 1 — Aggregation
+
+#### Execution Plan:
+
+![](docs/images/Q1%20explain.png)
+
+#### Performance/Correctness Issue:
+
+1.  Joining student to takes: it changes the unit of analysis from averaging over students to averaging over enrollments, which is not what the prompt is asking
+2.  Sequential scan on takes: it unnecessarily scanned all 30,000 rows when it could have used a filter
+
+### **Query 2 — Multi-Table Join**
+
+#### Execution Plan:
+
+![](images/Q2%20explain%201.png)
+
+![](images/Q2%20explain%202.png)
+
+#### Performance/Correctness Issue:
+
+1.  Sequential scan on takes: it reads all 30,000 rows when it's unnecessary.
+2.  Sort Key: unnecessary order by at the end, can be replaced by Index
+
+### **Query 3 —** Correlated Subquery
+
+#### Execution Plan:
+
+![](images/Q3%20explain.png)
+
+#### Performance/Correctness Issue:
+
+1.  Grade comparison: The AI SQL is filtering by 'A' but it's not including 'A+' or 'A-", so it's returning 0 rows. This happens when AI doesn't know the data format.
+2.  Correlated subqueries: The plan included anti join logic (NOT EXIST, EXIST). Using HAVING instead is faster
+
+### **Query 4 —** Window Function
+
+#### Execution Plan:
+
+![](images/Q4%20explain.png)
+
+#### Performance/Correctness Issue:
+
+1.  Percentile logic: The query is using PERCENT_RANK(), meaning that the highest paid instructor is given the rank of 0 and the lowest will get a rank of 1. This is backwards from what the prompt was asking, which was be percentile, not rank
+
+2.  Department NULL filter: The query includes the filter (dept_name IS NOT NULL). It's unnecessary if the column is already non null by schema and could exclude rows if null departments were meant to be shown
+
+    ### **Query 5 —** Complex Query
+
+    #### Execution Plan:
+
+    ![](images/Q5%20explain%201.png)
+
+![](images/Q5%20explain%202.png)
+
+#### Performance/Correctness Issue:
+
+1.  Multiple sequential scan on takes: The query scans all 30,000 rows twice for 'takes'. This can be consolidated by joining
+2.  Not exist: increases complexity and lads to multiple re scanning of 'takes'.
+
+## Part 3: Query Optimization
+
+### Query 1 — Aggregation
+
+#### Indexes created
+
+CREATE INDEX idx_takes_student_id ON takes(ID);
+
+CREATE INDEX idx_course_dept ON course(dept_name);
+
+#### Optimized Version
+
+```         
+```
+
+#### New Execution Plan
+
+#### Performance Comparison
+
+| Metric                | Before          | After      | Change |
+|-----------------------|-----------------|------------|--------|
+| Scan type on takes    | seq scan        | index scan |        |
+| Join students to take | avg(s.tot_cred) | use CTE    |        |
+| Rows scanned          | 30000           | 30000      | 0%     |
+| Execution Tim         | 274             | 92         | -66%   |
+
+### **Query 2 — Multi-Table Join**
+
+#### Indexes created
+
+CREATE INDEX idx_takes_student_id ON takes(ID)
+
+CREATE INDEX idx_takes_section
+
+ON takes(course_id, sec_id, semester, year);
+
+#### Optimized Version
+
+```         
+SELECT
+    i.name AS instructor_name,
+    i.dept_name AS instructor_department,
+    c.course_id,
+    c.title AS course_title,
+    s.sec_id,
+    s.semester,
+    s.year,
+    COUNT(tk.ID) AS enrolled_students
+FROM instructor AS i
+JOIN teaches AS te
+    ON i.ID = te.ID
+JOIN section AS s
+    ON te.course_id = s.course_id
+   AND te.sec_id = s.sec_id
+   AND te.semester = s.semester
+   AND te.year = s.year
+JOIN course AS c
+    ON s.course_id = c.course_id
+JOIN takes AS tk
+    ON s.course_id = tk.course_id
+   AND s.sec_id = tk.sec_id
+   AND s.semester = tk.semester
+   AND s.year = tk.year
+GROUP BY
+    i.ID,
+    i.name,
+    i.dept_name,
+    c.course_id,
+    c.title,
+    s.sec_id,
+    s.semester,
+    s.year
+HAVING COUNT(tk.ID) >= 10
+ORDER BY i.dept_name DESC, i.name;
+```
+
+#### New Execution Plan
+
+![](images/NEW%20Q2%20explain%201.png)
+
+![](images/New%20Q2%20explain%202.png)
+
+#### Performance Comparison
+
+| Metric             | Before   | After      | Change |
+|--------------------|----------|------------|--------|
+| Scan type on takes | Seq scan | Index Scan |        |
+| Rows scanned       | 30,000   | 300        | -99%   |
+| Execution Time     | 173ms    | 59ms       | -65.9  |
+
+### **Query 3 —** Correlated Subquery
+
+#### Indexes created
+
+CREATE INDEX idx_takes_grade_covering
+
+ON takes(course_id, sec_id, semester, year)
+
+INCLUDE (ID, grade);
+
+#### Optimized Version
+
+```         
+SELECT c.course_id, c.title
+FROM course c
+JOIN section sec ON c.course_id = sec.course_id
+LEFT JOIN takes t ON sec.course_id = t.course_id
+AND sec.sec_id = t.sec_id
+AND sec.semester = t.semester
+AND sec.year = t.year
+AND t.grade LIKE 'A%'
+GROUP BY c.course_id, c.title
+HAVING COUNT(DISTINCT sec.course_id || sec.sec_id || sec.semester || sec.year)
+= COUNT(DISTINCT CASE WHEN t.grade LIKE 'A%'
+THEN sec.course_id || sec.sec_id || sec.semester || sec.year
+END);
+```
+
+#### New Execution Plan
+
+![](images/NEW%20Q3%20explain.png)
+
+#### Performance Comparison
+
+| Metric              | Before           | After             | Change |
+|---------------------|------------------|-------------------|--------|
+| Grade comparison    | Returned 0 rows  | Returned 85 rowss | 85%    |
+| Correlated Subquris | NOT EXIST, EXIST | HAVING            |        |
+| Execution Tim       | 173ms            | 25ms              | 85%    |
+
+### **Query 4 —** Window Function
+
+#### Indexes created
+
+CREATE INDEX idx_instructor_dept_salary
+
+ON instructor(dept_name, salary DESC);
+
+#### Optimized Version
+
+```         
+SELECT
+    name,
+    dept_name AS department,
+    salary,
+    RANK() OVER (
+        PARTITION BY dept_name
+        ORDER BY salary DESC
+    ) AS salary_rank,
+    ROUND(
+        (100 * CUME_DIST() OVER (
+            PARTITION BY dept_name
+            ORDER BY salary
+        ))::numeric,
+        2
+    ) AS percentile_in_department
+FROM instructor
+WHERE dept_name IS NOT NULL
+ORDER BY dept_name, salary_rank, name;
+```
+
+#### New Execution Plan
+
+![](images/NEW%20Q4%20explain.png)
+
+#### Performance Comparison
+
++------------------+-------------+-------------+-------------+
+| Metric           | Before      | After       | Change      |
++==================+=============+=============+=============+
+| Percentile logic | 0= highest  | 0= lowest   |             |
+|                  |             |             |             |
+|                  | 1= lowest   | 1=highest   |             |
++------------------+-------------+-------------+-------------+
+| Rows scanned     | 50          | 50          | 0           |
++------------------+-------------+-------------+-------------+
+| Execution Tim    | 261         | 180         | 31%         |
++------------------+-------------+-------------+-------------+
+
+### **Query 5 —** Complex Query
+
+#### Indexes created
+
+CREATE INDEX idx_advisor_instructor ON advisor(i_ID);
+
+#### Optimized Version
+
+```         
+WITH dept_counts AS (
+    SELECT s.ID,s.name,COUNT(DISTINCT c.dept_name) AS dept_count
+    FROM student AS s
+    JOIN takes AS t ON t.ID = s.ID
+    JOIN course AS c ON c.course_id = t.course_id
+    GROUP BY s.ID, s.name
+),
+advisor_taught_students AS (
+    SELECT DISTINCT a.s_ID AS student_id
+    FROM advisor AS a
+    JOIN teaches AS te ON te.ID = a.i_ID
+    JOIN takes AS t ON t.ID = a.s_ID
+       AND t.course_id = te.course_id
+       AND t.sec_id = te.sec_id
+       AND t.semester = te.semester
+       AND t.year = te.year
+)
+SELECT d.ID, d.name
+FROM dept_counts AS d
+LEFT JOIN advisor_taught_students AS ats ON ats.student_id = d.ID
+WHERE d.dept_count >= 3
+  AND ats.student_id IS NULL;
+```
+
+#### New Execution Plan
+
+#### Performance Comparison
+
+| Metric               | Before   | After      | Change |
+|----------------------|----------|------------|--------|
+| Scan type on advisor | seq scan | index scan |        |
+| Rows scanned         | 2000     | 2000       | 0      |
+| Execution Tim        | 248ms    | 105ms      | -58%   |
+
+## Part 4: Reflection
+
+Across all five queries, the AI consistently produced syntactically correct and logically reasonable SQL, especially for joins, grouping, and window functions. It often selected appropriate strategies, such as using `GROUP BY`, `HAVING`, window functions (`RANK`, `PERCENT_RANK`), and anti-join patterns (`NOT EXISTS`) for “for all” conditions. However, AI consistently missed deeper correctness and performance details. The most common correctness issue was mixing levels of aggregation, such as computing `AVG(tot_cred)` after joining to `takes`, which weighted students by their number of enrollments. It also misused functions like `PERCENT_RANK()` which produced values that did not match the intended meaning of “percentile.” On the performance side, AI repeatedly generated queries that caused full table scans on `takes` and overly complex sub queries, such as `NOT EXISTS` patterns that re-scan large data sets. Overall, AI demonstrated strong structural SQL knowledge but lacked awareness of execution cost and data semantics. AI-generated SQL should not be trusted without review in scenarios involving complex joins, composite keys, or multi-level aggregation. In this schema, queries involving `takes`, `section`, and `teaches` are especially risky because failing to join on all four key attributes (course_id, sec_id, semester, year) can produce incorrect results through row multiplication. Similarly, queries combining counts and averages are prone to subtle errors if AI does not account for differences in data granularity. In a professional workflow, I would use AI-generated SQL as a starting point, but not a final solution. AI is useful for quickly producing a draft query or exploring different approaches, but every query must go through a review process. This would include verifying join conditions, aggregation logic and using (EXPLAIN ANALYZE) to review execution plans. This lab significantly improved my understanding of how SQL queries actually execute. Before, I focused mainly on producing correct results, but I now understand that query structure directly affects performance and correctness.For example, I learned that joining tables before aggregation can unintentionally duplicate data, and that functions like COUNT and AVG depend heavily on the level of detail in the data. Moving forward, I will approach SQL more deliberately by verifying joins against true primary keys, considering performance implications early, and using tools like (EXPLAIN ANALYZE) to validate efficiency. This matters because in real-world systems, even small logical mistakes or inefficiencies can scale into significant correctness issues or performance bottlenecks.

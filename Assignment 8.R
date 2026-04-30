@@ -1,0 +1,161 @@
+install.packages(c("shiny","DBI","RPostgres"))
+# install.packages("shiny") # If you have not installed this package, remove the # sign and run
+library(shiny)
+
+# Define UI for app that draws a histogram ----
+ui <- fluidPage(
+  # App title ----
+  titlePanel("EPPS6354 Shiny workshop 1"),
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      # Input: Slider for the number of bins ----
+      sliderInput(inputId = "bins",
+                  label = "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+      
+    ),
+    
+    # Main panel for displaying outputs ----
+    mainPanel(
+      
+      # Output: Histogram ----
+      plotOutput(outputId = "distPlot")
+      
+    )
+  )
+)
+
+# Define server logic required to draw a histogram ----
+server <- function(input, output) {
+  
+  # Histogram of the Old Faithful Geyser Data ----
+  # with requested number of bins
+  # This expression that generates a histogram is wrapped in a call
+  # to renderPlot to indicate that:
+  #
+  # 1. It is "reactive" and therefore should be automatically
+  #    re-executed when inputs (input$bins) change
+  # 2. Its output type is a plot
+  output$distPlot <- renderPlot({
+    
+    x    <- faithful$waiting
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    
+    hist(x, breaks = bins, col = "forestgreen", border = "white",
+         xlab = "Waiting time to next eruption (in mins)",
+         main = "Histogram of waiting times")
+    
+  })
+  
+}
+
+shinyApp(ui = ui, server = server)
+
+# PART 2
+# install.packages(c("DBI", "RPostgres"))
+library(DBI)
+library(RPostgres)
+
+# connect to postgres database
+postgre_con <- dbConnect(RPostgres::Postgres(),
+                         dbname = 'University', # name of the database from textbook
+                         host = '127.0.0.1', 
+                         port = 5432, 
+                         user = 'postgres',
+                         password = 'mia330317') # type in your PostgreSQL/pgAdmin password
+
+postgres_sql <- "SELECT * FROM instructor" # Create SQL query object
+
+dbGetQuery(postgre_con, postgres_sql) 
+
+department_df <- dbGetQuery(postgre_con, postgres_sql)
+class(department_df)
+
+#PART 3
+
+install.packages(c("shiny","DBI","RPostgres","RSQLite"))
+library(shiny)
+library(DBI)
+library(RPostgres)
+library(RSQLite)
+
+# Define UI
+ui <- fluidPage(
+  sliderInput("nrows", "Enter the number of rows to display:",
+              min = 1,
+              max = 519,
+              value = 15),
+  tableOutput("tbl")
+)
+
+# Define server logic 
+server <- function(input, output) {
+  output$tbl <- renderTable({
+    
+    # postgres
+    postgres_conn <- dbConnect(RPostgres::Postgres(),dbname = 'NBAplayers', 
+                               #  host = '127.0.0.1',
+                               port = 5432, 
+                               user = 'postgres',
+                               password = 'mia330317') # Type in your database server password
+    postgres_sql="SELECT * FROM player Where is_active = '1' "
+    
+    conn=postgres_conn
+    str_sql = postgres_sql
+    
+    
+    on.exit(dbDisconnect(conn), add = TRUE)
+    dbGetQuery(conn, paste0(str_sql, " LIMIT ", input$nrows, ";"))
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
+#PART 4
+install.packages(c("shiny","DBI","RPostgres","RSQLite"))
+library(shiny)
+library(DBI)
+library(RPostgres)
+library(RSQLite)
+
+# Define UI for application
+ui <- fluidPage(
+  sliderInput("nrows", "Enter the number of rows to display:",
+              min = 1,
+              max = 519,
+              value = 15),
+  # tableOutput("tbl")
+  dataTableOutput("tbl")
+)
+
+# Define server logic
+server <- function(input, output) {
+  table <- renderDataTable({
+    
+    # sqllite
+    # Be sure the data file must be in same folder
+    sqlite_conn <- dbConnect(RSQLite::SQLite(), dbname ='nba.db')
+    
+    # Create SQL commmand to join variables from tables for query
+    
+    sqlite_sql="SELECT p.id, p.first_name, p.last_name, p.full_name, pp.urlPlayerHeadshot FROM player p INNER JOIN player_photos pp ON pp.idplayer=p.id WHERE p.is_active=1"
+    
+    conn=sqlite_conn
+    str_sql = sqlite_sql
+    
+    on.exit(dbDisconnect(conn), add = TRUE)
+    table_df = dbGetQuery(conn, paste0(str_sql, " LIMIT ", input$nrows, ";"))
+    table_df$headshot<-c(paste0('<img src="', table_df$urlplayerheadshot, '"></img>'))
+    table_df<-table_df[c('full_name', 'headshot')]
+  }, escape = FALSE)
+  
+  output$tbl <- table
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)

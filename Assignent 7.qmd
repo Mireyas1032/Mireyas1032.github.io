@@ -439,17 +439,17 @@ ORDER BY dept_name, salary_rank, name;
 
 #### Performance Comparison
 
-+------------------+-------------+-------------+-------------+
-| Metric           | Before      | After       | Change      |
-+==================+=============+=============+=============+
-| Percentile logic | 0= highest  | 0= lowest   |             |
-|                  |             |             |             |
-|                  | 1= lowest   | 1=highest   |             |
-+------------------+-------------+-------------+-------------+
-| Rows scanned     | 50          | 50          | 0           |
-+------------------+-------------+-------------+-------------+
-| Execution Tim    | 261         | 180         | 31%         |
-+------------------+-------------+-------------+-------------+
++------------------+------------+-----------+--------+
+| Metric           | Before     | After     | Change |
++==================+============+===========+========+
+| Percentile logic | 0= highest | 0= lowest |        |
+|                  |            |           |        |
+|                  | 1= lowest  | 1=highest |        |
++------------------+------------+-----------+--------+
+| Rows scanned     | 50         | 50        | 0      |
++------------------+------------+-----------+--------+
+| Execution Tim    | 261        | 180       | 31%    |
++------------------+------------+-----------+--------+
 
 ### **Query 5 —** Complex Query
 
@@ -486,9 +486,9 @@ WHERE d.dept_count >= 3
 
 #### New Execution Plan
 
-![](images/NEW Q5 explain 1.png)
+![](images/NEW%20Q5%20explain%201.png)
 
-![](images/NEW Q5 explain 2.png)
+![](images/NEW%20Q5%20explain%202.png)
 
 #### Performance Comparison
 

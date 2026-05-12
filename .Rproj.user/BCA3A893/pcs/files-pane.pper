@@ -2,12 +2,12 @@
     "sortOrder": [
         {
             "columnIndex": 4,
-            "ascending": false
+            "ascending": true
         },
         {
             "columnIndex": 2,
             "ascending": false
         }
     ],
-    "path": "~/Info Mgm/IM_github/docs"
+    "path": "~/Desktop"
 }

@@ -1,6 +1,6 @@
 ---
 title: "Assignment 7"
-format: revealjs
+format: pdf
 ---
 
 ## Part 1: Query Generation

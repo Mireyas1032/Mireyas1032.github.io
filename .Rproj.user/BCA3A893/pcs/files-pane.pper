@@ -6,8 +6,8 @@
         },
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/Info Mgm/IM_github"
+    "path": "~/Info Mgm/NBAapp"
 }

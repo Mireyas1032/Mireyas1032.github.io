@@ -32,6 +32,9 @@ website:
             text: Assignment 6
           - href: Assignment 7.qmd
             text: Assignment 7
+          - href: Assignment 8.qmd
+            text: Assignment 7
+            
 
 format:
   html:

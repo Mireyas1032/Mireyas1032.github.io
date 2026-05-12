@@ -1,5 +1,6 @@
 ---
 title: "Project"
+format: pdf
 ---
 
 Shiny app:
@@ -180,4 +181,4 @@ More broadly, this project demonstrates that structured relational modeling and 
 
 Figure 1
 
-![](images/Figure 1.png)
+![](images/Figure%201.png)

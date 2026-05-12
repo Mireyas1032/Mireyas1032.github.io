@@ -1,7 +1,6 @@
 ---
-title: "Assignment 7 (AI Lab 1)"
-format: html
-engine: knitr
+title: "Assignment 7"
+format: revealjs
 ---
 
 ## Part 1: Query Generation

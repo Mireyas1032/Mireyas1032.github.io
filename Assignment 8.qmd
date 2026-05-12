@@ -1,0 +1,8 @@
+---
+title: "Assignment 8"
+format: revealjs
+---
+
+Shiny app
+
+<https://mireyas.shinyapps.io/NBAapp/>
